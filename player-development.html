@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BTB Player Development System</title>
+<title>Player Development | BTB Lacrosse</title>
+<meta name="description" content="BTB Lacrosse Player Development System — complete training pathway with drill videos, field diagrams, and mastery checklists across 6 development pillars.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
 <style>
 /* ===== BTB DESIGN SYSTEM ===== */
 :root {
@@ -23,8 +25,8 @@
   --btb-text: #1B2A4A;
   --btb-text-secondary: #4A5568;
   --btb-text-muted: #718096;
-  --font-heading: 'Oswald', 'Arial Narrow', sans-serif;
-  --font-body: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -47,16 +49,74 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ===== HEADER ===== */
-.btb-header {
+/* ===== SITE HEADER ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--btb-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 70px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+.site-header .btb-logo img { height: 60px; display: block; }
+.btb-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.btb-nav a {
+  font-size: 16px;
+  font-weight: 600;
+  color: #101010;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: var(--font-body);
+}
+.btb-nav a:hover { color: #D22630; }
+.btb-cta {
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  background: #D22630;
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.btb-cta:hover { background: #a01e26; }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: #101010;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
   background: var(--btb-navy);
   color: var(--btb-white);
-  padding: var(--space-xl) var(--space-md);
+  padding: calc(70px + var(--space-xl)) var(--space-md) var(--space-xl);
   text-align: center;
   position: relative;
   overflow: hidden;
 }
-.btb-header::after {
+.page-header::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -65,39 +125,19 @@ body {
   height: 3px;
   background: linear-gradient(90deg, transparent, var(--btb-gold), transparent);
 }
-.btb-logo-mark {
+.page-header h1 {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  display: block;
-}
-.btb-logo-text {
-  font-family: var(--font-heading);
-  font-size: 0.625rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  display: block;
-  margin-top: 2px;
-  opacity: 0.8;
-}
-.btb-header h1 {
-  font-family: var(--font-heading);
-  font-size: 1.75rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin: var(--space-lg) 0 var(--space-xs);
+  letter-spacing: 2px;
+  margin-bottom: var(--space-xs);
 }
-.btb-subtitle {
+.page-header .btb-subtitle {
   font-family: var(--font-body);
   font-size: 0.875rem;
   opacity: 0.7;
   margin: 0;
-}
-@media (min-width: 768px) {
-  .btb-header h1 { font-size: 2rem; }
 }
 
 /* ===== CONTAINER ===== */
@@ -684,30 +724,47 @@ body {
 }
 
 /* ===== FOOTER ===== */
-.btb-footer {
-  text-align: center;
-  padding: var(--space-2xl) var(--space-md);
-  border-top: 1px solid var(--btb-light-gray);
+.site-footer {
+  background: #000;
+  color: rgba(255,255,255,0.5);
+  padding: 2.5rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
   margin-top: var(--space-3xl);
 }
-.btb-footer-logo {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--btb-navy);
-  letter-spacing: 0.1em;
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.btb-footer-text {
-  font-family: var(--font-body);
+.footer-copy {
   font-size: 0.75rem;
-  color: var(--btb-text-muted);
-  margin-top: var(--space-xs);
+  color: rgba(255,255,255,0.25);
+}
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-links a {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #D22630; }
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
 }
 
 /* ===== STICKY NAV ===== */
 .btb-sticky-nav {
   position: sticky;
-  top: 0;
+  top: 70px;
   z-index: 100;
   background: var(--btb-white);
   box-shadow: var(--shadow-sm);
@@ -745,39 +802,68 @@ body {
   border-color: var(--btb-navy);
 }
 
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .btb-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.98);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8rem;
+    z-index: 1000;
+  }
+  .btb-nav.open { display: flex; }
+  .btb-nav a { font-size: 1.1rem; }
+  .site-header .btb-logo img { height: 48px; }
+  .site-header { padding: 0 16px; }
+  .hamburger { display: flex; z-index: 1001; }
+  .btb-sticky-nav { top: 70px; }
+  .page-header { padding-top: calc(70px + var(--space-lg)); }
+}
+
 /* ===== PRINT ===== */
 @media print {
-  .btb-sticky-nav, .btb-search-bar, .btb-filter-chips, .btb-view-toggle, .btb-play-btn { display: none !important; }
+  .site-header, .btb-sticky-nav, .btb-search-bar, .btb-filter-chips, .btb-view-toggle, .btb-play-btn { display: none !important; }
   .btb-tab-content { display: block !important; padding: var(--space-md) 0; }
   .btb-tab-list { display: none; }
   .btb-video-wrapper { display: none; }
-  .btb-video-wrapper::after {
-    content: attr(data-video-title);
-    display: block;
-    font-family: var(--font-body);
-    color: var(--btb-text-muted);
-    font-size: 0.875rem;
-  }
   .btb-accordion[open] .btb-accordion-body,
   .btb-accordion .btb-accordion-body { display: block; }
   .btb-drill-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
   body { background: white; }
-  .btb-header { background: white !important; color: var(--btb-navy) !important; }
-  .btb-header::after { display: none; }
+  .page-header { background: white !important; color: var(--btb-navy) !important; }
+  .page-header::after { display: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="btb-header">
-  <div class="btb-logo">
-    <span class="btb-logo-mark">BTB</span>
-    <span class="btb-logo-text">Be The Best Lacrosse</span>
+<!-- SITE HEADER -->
+<header class="site-header" id="navbar">
+  <a href="index.html" class="btb-logo">
+    <img src="assets/btb-logo-flat.png" alt="Be The Best Lacrosse">
+  </a>
+  <nav class="btb-nav" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="academy-landing.html">Academy</a>
+    <a href="world-series.html">World Series</a>
+    <a href="coach-bios.html">Coaches</a>
+    <a href="faq.html">FAQ</a>
+    <a href="index.html#apply" class="btb-cta">Register</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
+</header>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
   <h1>Player Development System</h1>
   <p class="btb-subtitle">Complete Training Pathway &bull; 2025–26 Season</p>
-</header>
+</div>
 
 <!-- STICKY NAV -->
 <nav class="btb-sticky-nav">
@@ -895,6 +981,14 @@ body {
         <span class="btb-drill-level intermediate">Intermediate</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Cradling Fundamentals">
+          <div class="btb-lite-yt" data-videoid="gcAKOr_WYeo">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/gcAKOr_WYeo/hqdefault.jpg" alt="Cradling fundamentals" loading="lazy">
+          </div>
+        </div>
         <div class="btb-coaching-notes">
           <div class="btb-note-item">
             <span class="btb-note-label">🎯 Key Focus</span>
@@ -925,6 +1019,14 @@ body {
         <span class="btb-drill-level advanced">Advanced</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Throwing & Catching Fundamentals">
+          <div class="btb-lite-yt" data-videoid="aLH__Qw5NxA">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/aLH__Qw5NxA/hqdefault.jpg" alt="Throwing and catching" loading="lazy">
+          </div>
+        </div>
         <div class="btb-coaching-notes">
           <div class="btb-note-item">
             <span class="btb-note-label">🎯 Key Focus</span>
@@ -999,11 +1101,11 @@ body {
       </div>
       <div class="btb-drill-body">
         <div class="btb-video-wrapper" data-video-title="Shooting Mechanics Breakdown">
-          <div class="btb-lite-yt" data-videoid="PLACEHOLDER_SHOOT1">
+          <div class="btb-lite-yt" data-videoid="NFmGy1fUsTw">
             <button class="btb-play-btn" aria-label="Play video">
               <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
             </button>
-            <img src="https://i.ytimg.com/vi/PLACEHOLDER_SHOOT1/hqdefault.jpg" alt="Shooting mechanics" loading="lazy">
+            <img src="https://i.ytimg.com/vi/NFmGy1fUsTw/hqdefault.jpg" alt="Shooting mechanics" loading="lazy">
           </div>
         </div>
         <div class="btb-coaching-notes">
@@ -1035,6 +1137,14 @@ body {
         <span class="btb-drill-level intermediate">Intermediate</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Rabil's Shot on the Run">
+          <div class="btb-lite-yt" data-videoid="jYyANb8GQ7k">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/jYyANb8GQ7k/hqdefault.jpg" alt="Shot on the run" loading="lazy">
+          </div>
+        </div>
         <!-- Field Diagram -->
         <div class="btb-field-container">
           <div class="btb-field-title">Alley Shooting Drill</div>
@@ -1065,7 +1175,7 @@ body {
               <!-- Shot on goal -->
               <line x1="138" y1="372" x2="194" y2="438" stroke="#1D3557" stroke-width="3" marker-end="url(#arr-navy)"/>
               <!-- Shot label -->
-              <text x="168" y="396" fill="#1D3557" font-family="Oswald,sans-serif" font-size="11" font-weight="600" transform="rotate(-40 168 396)">SHOT</text>
+              <text x="168" y="396" fill="#1D3557" font-family="Montserrat,sans-serif" font-size="11" font-weight="600" transform="rotate(-40 168 396)">SHOT</text>
               <!-- Goalie -->
               <circle cx="200" cy="442" r="10" fill="#F4A261" stroke="white" stroke-width="2"/>
               <text x="200" y="442" text-anchor="middle" dy="0.35em" fill="white" font-size="9" font-weight="bold">G</text>
@@ -1099,6 +1209,14 @@ body {
         <span class="btb-drill-level advanced">Advanced</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Quarterback Shooting Drill">
+          <div class="btb-lite-yt" data-videoid="deAUEK_jDc0">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/deAUEK_jDc0/hqdefault.jpg" alt="Inside finishes drill" loading="lazy">
+          </div>
+        </div>
         <div class="btb-coaching-notes">
           <div class="btb-note-item">
             <span class="btb-note-label">🎯 Key Focus</span>
@@ -1165,6 +1283,14 @@ body {
         <span class="btb-drill-level beginner">Beginner</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Fixing Common Defensive Mistakes">
+          <div class="btb-lite-yt" data-videoid="FKr65AUZdV0">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/FKr65AUZdV0/hqdefault.jpg" alt="Defensive footwork" loading="lazy">
+          </div>
+        </div>
         <div class="btb-coaching-notes">
           <div class="btb-note-item">
             <span class="btb-note-label">🎯 Key Focus</span>
@@ -1190,6 +1316,14 @@ body {
         <span class="btb-drill-level intermediate">Intermediate</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Zig Zag Defense Drill">
+          <div class="btb-lite-yt" data-videoid="vjNEHr4qpD8">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/vjNEHr4qpD8/hqdefault.jpg" alt="Defense drill" loading="lazy">
+          </div>
+        </div>
         <!-- Field Diagram: Slide Package -->
         <div class="btb-field-container">
           <div class="btb-field-title">Adjacent Slide — Crease Slides First</div>
@@ -1232,14 +1366,14 @@ body {
               <text x="320" y="370" text-anchor="middle" dy="0.35em" fill="white" font-size="10" font-weight="bold">D2</text>
               <!-- Slide arrow -->
               <line x1="308" y1="368" x2="250" y2="372" stroke="#2A9D8F" stroke-width="3" marker-end="url(#arr-teal)"/>
-              <text x="270" y="358" fill="#2A9D8F" font-family="Oswald,sans-serif" font-size="11" font-weight="700">SLIDE</text>
+              <text x="270" y="358" fill="#2A9D8F" font-family="Montserrat,sans-serif" font-size="11" font-weight="700">SLIDE</text>
 
               <!-- D3 crease — rotates -->
               <circle cx="210" cy="400" r="12" fill="#2A9D8F" stroke="white" stroke-width="2"/>
               <text x="210" y="400" text-anchor="middle" dy="0.35em" fill="white" font-size="10" font-weight="bold">D3</text>
               <!-- Rotate arrow to cover A2 -->
               <path d="M 222 398 Q 280 390 312 378" fill="none" stroke="#1D3557" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arr-navy2)"/>
-              <text x="266" y="404" fill="#1D3557" font-family="Oswald,sans-serif" font-size="10" font-weight="600">ROTATE</text>
+              <text x="266" y="404" fill="#1D3557" font-family="Montserrat,sans-serif" font-size="10" font-weight="600">ROTATE</text>
 
               <!-- Goalie -->
               <circle cx="200" cy="442" r="10" fill="#F4A261" stroke="white" stroke-width="2"/>
@@ -1325,6 +1459,14 @@ body {
         <span class="btb-drill-level beginner">Beginner</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Rabil's Split Dodge Mechanics">
+          <div class="btb-lite-yt" data-videoid="M4Tvpgv1RA0">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/M4Tvpgv1RA0/hqdefault.jpg" alt="Split dodge mechanics" loading="lazy">
+          </div>
+        </div>
         <div class="btb-coaching-notes">
           <div class="btb-note-item">
             <span class="btb-note-label">🎯 Key Focus</span>
@@ -1339,12 +1481,20 @@ body {
       </div>
     </div>
 
-    <div class="btb-drill-card" data-pillar="offense" data-level="advanced" data-keywords="motion offense 2-3-1 set plays cuts picks">
+    <div class="btb-drill-card" data-pillar="offense" data-level="advanced" data-keywords="motion offense 2-3-1 set plays cuts picks wheel triangle dodge pop crease pass down pick down">
       <div class="btb-drill-card-header">
         <span class="btb-drill-title">Motion Offense — 2-3-1</span>
         <span class="btb-drill-level advanced">Advanced</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Midfield Motion — Triangle Offense">
+          <div class="btb-lite-yt" data-videoid="j2ECYQVTliw">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/j2ECYQVTliw/hqdefault.jpg" alt="Triangle motion offense" loading="lazy">
+          </div>
+        </div>
         <!-- Field diagram: 2-3-1 set -->
         <div class="btb-field-container">
           <div class="btb-field-title">2-3-1 Motion Offense — Initial Set</div>
@@ -1381,7 +1531,7 @@ body {
 
               <!-- Cut arrows -->
               <path d="M 72 358 Q 120 390 170 410" fill="none" stroke="#E63946" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arr-red2)"/>
-              <text x="100" y="400" fill="#E63946" font-family="Oswald,sans-serif" font-size="10" font-weight="600">CUT</text>
+              <text x="100" y="400" fill="#E63946" font-family="Montserrat,sans-serif" font-size="10" font-weight="600">CUT</text>
 
               <!-- Pass from M3 to wing -->
               <line x1="214" y1="298" x2="328" y2="360" stroke="#457B9D" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arr-blue)"/>
@@ -1400,9 +1550,27 @@ body {
         <div class="btb-coaching-notes">
           <div class="btb-note-item">
             <span class="btb-note-label">🎯 Key Focus</span>
-            <p>Ball movement initiates all cuts. When the ball goes to the wing, the opposite crease cuts through. When the ball goes to X, clear out and re-set.</p>
+            <p>Ball movement initiates all cuts. Maintain two interlocking triangles (middies + attackmen). When the ball goes to the wing, the opposite crease cuts through. When the ball goes to X, clear out and re-set.</p>
           </div>
         </div>
+        <div class="btb-teaching-points">
+          <div class="btb-teach-point"><span class="btb-teach-num">1</span><span class="btb-teach-text">Wheel motion: continuous rotation around the perimeter — every pass triggers the next player to replace. Keep the wheel moving until a seam opens.</span></div>
+          <div class="btb-teach-point"><span class="btb-teach-num">2</span><span class="btb-teach-text">Triangle movements: maintain your triangle shape through every dodge and rotation. If one point moves, the other two adjust to keep passing lanes alive.</span></div>
+          <div class="btb-teach-point"><span class="btb-teach-num">3</span><span class="btb-teach-text">Dodge & pop the crease: midfielder dodges from up top, crease attackman reads the slide and pops to the open space for a quick feed and finish.</span></div>
+          <div class="btb-teach-point"><span class="btb-teach-num">4</span><span class="btb-teach-text">Pass down, pick down: top man passes to the wing and immediately cuts down to set a pick on the wing defender. Picker rolls to the cage, receiver attacks off the screen.</span></div>
+        </div>
+        <details class="btb-accordion">
+          <summary class="btb-accordion-header">
+            <span>Motion Offense Keys</span>
+            <svg class="btb-chevron" width="16" height="16" viewBox="0 0 16 16"><polyline points="4,6 8,10 12,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary>
+          <div class="btb-accordion-body">
+            <p><strong>Wheel:</strong> Players rotate like a clock — pass and follow your pass, or pass and cut opposite. Never stand still.<br>
+            <strong>Triangle:</strong> Two interlocking triangles give the ball carrier two outlet passes at all times. When dodging, adjacent players fill and float.<br>
+            <strong>Dodge & Pop:</strong> When the middie drives, the crease man reads: if the slide comes from the crease, pop out high. If no slide, seal and cut backdoor.<br>
+            <strong>Pass Down Pick Down:</strong> Top passes to wing → immediately sprints down to set a pick on the wing's defender. Wing uses the screen to attack or shoot. Picker rolls to the crease for the dump-off.</p>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -1456,6 +1624,14 @@ body {
         <span class="btb-drill-level intermediate">Intermediate</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Game IQ — Midfield Shooting with Paul Rabil">
+          <div class="btb-lite-yt" data-videoid="RLJjI2-Qbek">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/RLJjI2-Qbek/hqdefault.jpg" alt="Game IQ film study" loading="lazy">
+          </div>
+        </div>
         <div class="btb-coaching-notes">
           <div class="btb-note-item">
             <span class="btb-note-label">🎯 Key Focus</span>
@@ -1534,6 +1710,14 @@ body {
         <span class="btb-drill-level beginner">Beginner</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Dodging Zig Zag Agility Drill">
+          <div class="btb-lite-yt" data-videoid="t18hqY74HgU">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/t18hqY74HgU/hqdefault.jpg" alt="Agility drill" loading="lazy">
+          </div>
+        </div>
         <div class="btb-coaching-notes">
           <div class="btb-note-item">
             <span class="btb-note-label">🎯 Key Focus</span>
@@ -1554,6 +1738,14 @@ body {
         <span class="btb-drill-level intermediate">Intermediate</span>
       </div>
       <div class="btb-drill-body">
+        <div class="btb-video-wrapper" data-video-title="Defensive Workout & Conditioning">
+          <div class="btb-lite-yt" data-videoid="Ur8eBsZG8w0">
+            <button class="btb-play-btn" aria-label="Play video">
+              <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="rgba(27,42,74,0.85)"/><polygon points="18,14 36,24 18,34" fill="white"/></svg>
+            </button>
+            <img src="https://i.ytimg.com/vi/Ur8eBsZG8w0/hqdefault.jpg" alt="Conditioning workout" loading="lazy">
+          </div>
+        </div>
         <div class="btb-coaching-notes">
           <div class="btb-note-item">
             <span class="btb-note-label">🎯 Key Focus</span>
@@ -1598,12 +1790,30 @@ body {
 </main>
 
 <!-- FOOTER -->
-<footer class="btb-footer">
-  <div class="btb-footer-logo">BTB</div>
-  <p class="btb-footer-text">Be The Best Lacrosse Club &bull; Long Island, NY &bull; Player Development System</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-copy">&copy; 2026 Be The Best Lacrosse. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="academy-landing.html">Academy</a>
+      <a href="coach-bios.html">Coaches</a>
+      <a href="faq.html">FAQ</a>
+      <a href="index.html#apply">Register</a>
+    </div>
+  </div>
 </footer>
 
 <script>
+// ===== MOBILE MENU =====
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+document.querySelectorAll('.btb-nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
 // ===== PILLAR DEFINITIONS =====
 const PILLARS = [
   { id: 'stickskills', name: 'Stick Skills' },

@@ -1,0 +1,10 @@
+{
+  "name": "btb-lacrosse",
+  "version": "1.0.0",
+  "description": "BTB Lacrosse — Long Island's Premier Lacrosse Development Program",
+  "scripts": {
+    "dev": "npx live-server --port=3000",
+    "lint": "npx htmlhint '*.html'",
+    "format": "npx prettier --write '*.html' '*.css'"
+  }
+}

@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BTB Lacrosse | Long Island's Premier Lacrosse Development Program</title>
-    <meta name="description" content="BTB Lacrosse builds complete lacrosse players through structured development, film study, small-group training, and accountability. Long Island's premier lacrosse academy.">
+    <meta name="description"
+        content="BTB Lacrosse builds complete lacrosse players through structured development, film study, small-group training, and accountability. Long Island's premier lacrosse academy.">
     <meta property="og:title" content="BTB Lacrosse | Long Island's Premier Lacrosse Development Program">
-    <meta property="og:description" content="BTB builds complete lacrosse players through culture, accountability, small-group training, structured practices, and film study.">
+    <meta property="og:description"
+        content="BTB builds complete lacrosse players through culture, accountability, small-group training, structured practices, and film study.">
     <meta property="og:type" content="website">
+    <meta name="theme-color" content="#D22630">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
     <style>
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -28,7 +37,9 @@
             --off-white: #F5F5F5;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -48,6 +59,11 @@
             background: #ffffff;
             border-bottom: 1px solid #eee;
             z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .btb-header.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
         }
 
         .btb-logo img {
@@ -96,6 +112,8 @@
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
+            z-index: 1001;
+            position: relative;
         }
 
         .hamburger span {
@@ -104,6 +122,37 @@
             background: #101010;
             border-radius: 2px;
             transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* Skip to content link */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 16px;
+            background: var(--primary);
+            color: #fff;
+            padding: 8px 16px;
+            z-index: 9999;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 0 0 4px 4px;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus {
+            top: 0;
         }
 
         /* ── Hero ── */
@@ -155,12 +204,10 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                180deg,
-                rgba(0, 0, 0, 0.72) 0%,
-                rgba(0, 0, 0, 0.55) 40%,
-                rgba(0, 0, 0, 0.72) 100%
-            );
+            background: linear-gradient(180deg,
+                    rgba(0, 0, 0, 0.72) 0%,
+                    rgba(0, 0, 0, 0.55) 40%,
+                    rgba(0, 0, 0, 0.72) 100%);
             z-index: 1;
         }
 
@@ -169,7 +216,7 @@
             position: absolute;
             inset: 0;
             background: radial-gradient(ellipse at 20% 80%, rgba(210, 38, 48, 0.18) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 20%, rgba(210, 38, 48, 0.08) 0%, transparent 50%);
+                radial-gradient(ellipse at 80% 20%, rgba(210, 38, 48, 0.08) 0%, transparent 50%);
             z-index: 2;
         }
 
@@ -197,10 +244,25 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-100vh); opacity: 0; }
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
         }
 
         .hero-inner {
@@ -214,7 +276,7 @@
         .hero-badge {
             display: inline-block;
             border: 1px solid rgba(210, 38, 48, 0.4);
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             padding: 0.35rem 1.2rem;
             font-size: 0.7rem;
             font-weight: 600;
@@ -239,13 +301,15 @@
             animation: fadeUp 0.8s forwards 0.5s;
         }
 
-        .hero h1 .highlight { color: var(--primary); }
+        .hero h1 .highlight {
+            color: var(--primary);
+        }
 
         .hero-sub {
             font-size: 1rem;
             font-weight: 400;
             line-height: 1.7;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255, 255, 255, 0.55);
             max-width: 540px;
             margin: 0 auto 2.5rem;
             opacity: 0;
@@ -285,15 +349,18 @@
 
         .hero-proof-label {
             font-size: 0.65rem;
-            font-weight: 500;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.35);
+            color: rgba(255, 255, 255, 0.6);
             margin-top: 0.2rem;
         }
 
         @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-scroll {
@@ -308,12 +375,19 @@
         .hero-scroll svg {
             width: 24px;
             height: 24px;
-            stroke: rgba(255,255,255,0.3);
+            stroke: rgba(255, 255, 255, 0.3);
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
         }
 
         /* ── Buttons ── */
@@ -348,12 +422,12 @@
         .btn-outline {
             background: transparent;
             color: var(--white);
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .btn-outline:hover {
             border-color: var(--white);
-            background: rgba(255,255,255,0.06);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .btn-dark {
@@ -373,7 +447,7 @@
 
         .btn-white:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .btn-ghost {
@@ -387,7 +461,7 @@
             color: var(--white);
         }
 
-        /* ── Stats Bar ── */
+        /* ── Stats Bar (retained for sub-pages) ── */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -398,10 +472,12 @@
         .stat-item {
             text-align: center;
             padding: 2.5rem 1rem;
-            border-right: 1px solid rgba(255,255,255,0.06);
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        .stat-item:last-child { border-right: none; }
+        .stat-item:last-child {
+            border-right: none;
+        }
 
         .stat-number {
             font-family: 'Bebas Neue', sans-serif;
@@ -415,8 +491,27 @@
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: rgba(255,255,255,0.35);
+            color: rgba(255, 255, 255, 0.35);
             margin-top: 0.4rem;
+        }
+
+        /* ── Focus Visible (a11y) ── */
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        /* Hamburger button reset */
+        button.hamburger {
+            background: transparent;
+            border: none;
+            padding: 4px;
         }
 
         /* ── Shared Section Styles ── */
@@ -433,7 +528,9 @@
             margin-bottom: 3.5rem;
         }
 
-        .section-header.centered { text-align: center; }
+        .section-header.centered {
+            text-align: center;
+        }
 
         .section-tag {
             font-size: 0.7rem;
@@ -472,11 +569,18 @@
             color: var(--white);
         }
 
-        .section-dark .section-title { color: var(--white); }
-        .section-dark .section-subtitle { color: rgba(255,255,255,0.5); }
+        .section-dark .section-title {
+            color: var(--white);
+        }
+
+        .section-dark .section-subtitle {
+            color: rgba(255, 255, 255, 0.5);
+        }
 
         /* ── Alt Section ── */
-        .section-alt { background: var(--off-white); }
+        .section-alt {
+            background: var(--off-white);
+        }
 
         /* ── Pillar Grid ── */
         .pillar-grid {
@@ -488,8 +592,8 @@
         .pillar-card {
             padding: 2rem 1.5rem;
             border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.06);
-            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.03);
             transition: all 0.3s;
         }
 
@@ -520,7 +624,7 @@
         .pillar-text {
             font-size: 0.85rem;
             line-height: 1.65;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
         }
 
         /* ── Value Blocks (Development Model) ── */
@@ -540,7 +644,7 @@
 
         .dev-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         }
 
         .dev-card-icon {
@@ -588,8 +692,8 @@
 
         .film-card {
             padding: 2rem 1.5rem;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 8px;
             transition: all 0.3s;
         }
@@ -619,7 +723,7 @@
 
         .film-card p {
             font-size: 0.82rem;
-            color: rgba(255,255,255,0.45);
+            color: rgba(255, 255, 255, 0.45);
             line-height: 1.6;
         }
 
@@ -634,7 +738,7 @@
             flex-wrap: wrap;
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .film-pos-tag {
@@ -643,14 +747,14 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             padding: 0.4rem 1rem;
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 4px;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .film-pos-label {
             font-size: 0.72rem;
-            color: rgba(255,255,255,0.3);
+            color: rgba(255, 255, 255, 0.3);
             align-self: center;
         }
 
@@ -672,7 +776,7 @@
 
         .coach-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         }
 
         .coach-card-bar {
@@ -705,22 +809,22 @@
         }
 
         .result-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 8px;
             padding: 2rem;
             transition: all 0.3s;
         }
 
         .result-card:hover {
-            background: rgba(255,255,255,0.06);
+            background: rgba(255, 255, 255, 0.06);
             transform: translateY(-4px);
         }
 
         .result-quote {
             font-size: 0.92rem;
             line-height: 1.7;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             font-style: italic;
             margin-bottom: 1.5rem;
         }
@@ -751,7 +855,7 @@
 
         .result-role {
             font-size: 0.72rem;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
         }
 
         /* ── Academy Vision ── */
@@ -815,7 +919,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at center, rgba(210,38,48,0.12) 0%, transparent 60%);
+            background: radial-gradient(ellipse at center, rgba(210, 38, 48, 0.12) 0%, transparent 60%);
         }
 
         .cta-inner {
@@ -833,11 +937,13 @@
             line-height: 1;
         }
 
-        .cta-section h2 span { color: var(--primary); }
+        .cta-section h2 span {
+            color: var(--primary);
+        }
 
         .cta-section p {
             font-size: 0.95rem;
-            color: rgba(255,255,255,0.45);
+            color: rgba(255, 255, 255, 0.45);
             margin-bottom: 2.5rem;
             max-width: 480px;
             margin-left: auto;
@@ -855,9 +961,9 @@
         /* ── Footer ── */
         footer {
             background: var(--dark);
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             padding: 4rem 2rem 2rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .footer-grid {
@@ -889,13 +995,13 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .footer-social a:hover {
@@ -915,21 +1021,23 @@
 
         .footer-col a {
             display: block;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
             text-decoration: none;
             font-size: 0.82rem;
             padding: 0.25rem 0;
             transition: color 0.3s;
         }
 
-        .footer-col a:hover { color: var(--primary); }
+        .footer-col a:hover {
+            color: var(--primary);
+        }
 
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.25);
+            color: rgba(255, 255, 255, 0.25);
         }
 
         /* ── Animations ── */
@@ -953,7 +1061,9 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: rgba(255,255,255,0.98);
+                background: rgba(255, 255, 255, 0.97);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
@@ -961,74 +1071,112 @@
                 z-index: 1000;
             }
 
-            .btb-nav.open { display: flex; }
+            .btb-nav.open {
+                display: flex;
+            }
 
-            .btb-nav a { font-size: 1.1rem; }
+            .btb-nav a {
+                font-size: 1.1rem;
+            }
 
-            .btb-logo img { height: 48px; }
+            .btb-logo img {
+                height: 48px;
+            }
 
             .hamburger {
                 display: flex;
                 z-index: 1001;
             }
 
-            .hero-inner { padding: 5rem 1.5rem 3rem; }
+            .hero-inner {
+                padding: 5rem 1.5rem 3rem;
+            }
 
-            .hero-proof { gap: 1.5rem; }
-            .hero-proof-num { font-size: 1.5rem; }
+            .hero-proof {
+                gap: 1.5rem;
+            }
 
-            .stats-bar { grid-template-columns: repeat(2, 1fr); }
-            .stat-item { padding: 1.5rem 1rem; }
-            .stat-number { font-size: 2rem; }
+            .hero-proof-num {
+                font-size: 1.5rem;
+            }
 
-            section { padding: 4rem 1.5rem; }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
 
             .pillar-grid,
             .film-grid,
             .coach-grid,
-            .results-grid { grid-template-columns: 1fr; }
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
 
-            .dev-grid { grid-template-columns: 1fr; }
+            .dev-grid {
+                grid-template-columns: 1fr;
+            }
 
-            .academy-block { grid-template-columns: 1fr; gap: 2rem; }
+            .academy-block {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
 
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
 
-            .film-positions { justify-content: center; }
+            .film-positions {
+                justify-content: center;
+            }
         }
 
         @media (min-width: 769px) and (max-width: 1024px) {
+
             .pillar-grid,
             .film-grid,
-            .coach-grid { grid-template-columns: repeat(2, 1fr); }
+            .coach-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
+
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
     <!-- Header -->
-    <header class="btb-header" id="navbar">
-        <a href="/" class="btb-logo">
-            <img src="assets/btb-logo-flat.png" alt="Be The Best Lacrosse">
+    <header class="btb-header" id="navbar" role="banner">
+        <a href="index.html" class="btb-logo">
+            <img src="assets/btb-logo-flat.png" alt="BTB Lacrosse — Home">
         </a>
-        <nav class="btb-nav" id="navLinks">
-            <a href="/programs">Programs</a>
-            <a href="/training">Training</a>
-            <a href="/recruiting">Recruiting</a>
-            <a href="/coaches">Coaches</a>
+        <nav class="btb-nav" id="navLinks" role="navigation" aria-label="Main navigation">
+            <a href="#standard">Our Standard</a>
             <a href="academy-landing.html">Academy</a>
             <a href="world-series.html">World Series</a>
-            <a href="player-development.html">Player Dev</a>
-            <a href="/contact">Contact</a>
-            <a href="#apply" class="btb-cta">Register</a>
+            <a href="coach-bios.html">Coaches</a>
+            <a href="faq.html">FAQ</a>
+            <a href="#apply" class="btb-cta">Register Now</a>
         </nav>
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu"
+            aria-expanded="false">
             <span></span><span></span><span></span>
-        </div>
+        </button>
     </header>
 
     <!-- Hero -->
-    <section class="hero" id="home">
+    <section class="hero" id="main-content">
         <div class="hero-bg"></div>
 
         <!-- ══ DROP-IN: Background Image ══
@@ -1051,8 +1199,10 @@
         <div class="hero-particles" id="particles"></div>
         <div class="hero-inner">
             <div class="hero-badge">Long Island Lacrosse Development</div>
-            <h1>We Don't<br>Develop <span class="highlight">Talent.</span><br>We Build<br><span class="highlight">Players.</span></h1>
-            <p class="hero-sub">BTB is a structured lacrosse development program built on accountability, film study, small-group training, and intentional coaching. This is not a travel team. This is a standard.</p>
+            <h1>We Don't<br>Develop <span class="highlight">Talent.</span><br>We Build<br><span
+                    class="highlight">Players.</span></h1>
+            <p class="hero-sub">BTB is a structured lacrosse development program built on accountability, film study,
+                small-group training, and intentional coaching. This is not a travel team. This is a standard.</p>
             <div class="hero-buttons">
                 <a href="#apply" class="btn btn-primary">Apply Now &rarr;</a>
                 <a href="#standard" class="btn btn-outline">See Our Standard</a>
@@ -1083,26 +1233,6 @@
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <div class="stats-bar">
-        <div class="stat-item">
-            <div class="stat-number" data-target="500">0</div>
-            <div class="stat-label">Players Developed</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number" data-target="85">0</div>
-            <div class="stat-label">College Commits</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number" data-target="50">0</div>
-            <div class="stat-label">Trained Coaches</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number" data-target="10">0</div>
-            <div class="stat-label">Years Running</div>
-        </div>
-    </div>
-
     <!-- ═══════════════════════════════ -->
     <!-- OUR STANDARD -->
     <!-- ═══════════════════════════════ -->
@@ -1111,38 +1241,51 @@
             <div class="section-header reveal">
                 <div class="section-tag">Our Standard</div>
                 <h2 class="section-title">This Program Is Not For Everyone</h2>
-                <p class="section-subtitle">BTB is for families who understand that development is earned through discipline, repetition, and accountability. We do not recruit talent. We build players who are prepared for the next level.</p>
+                <p class="section-subtitle">BTB is for families who understand that development is earned through
+                    discipline, repetition, and accountability. We do not recruit talent. We build players who are
+                    prepared for the next level.</p>
             </div>
             <div class="pillar-grid">
                 <div class="pillar-card reveal">
                     <div class="pillar-num">01</div>
                     <div class="pillar-title">Culture First</div>
-                    <p class="pillar-text">Every player earns their place through effort, attitude, and consistency. There are no shortcuts here. Coachability is not optional — it is the foundation of everything we do.</p>
+                    <p class="pillar-text">Every player earns their place through effort, attitude, and consistency.
+                        There are no shortcuts here. Coachability is not optional — it is the foundation of everything
+                        we do.</p>
                 </div>
                 <div class="pillar-card reveal">
                     <div class="pillar-num">02</div>
                     <div class="pillar-title">Accountability</div>
-                    <p class="pillar-text">Players are accountable to their coaches, their teammates, and themselves. We review film. We track progress. We expect players to own their development, not wait for it to happen.</p>
+                    <p class="pillar-text">Players are accountable to their coaches, their teammates, and themselves. We
+                        review film. We track progress. We expect players to own their development, not wait for it to
+                        happen.</p>
                 </div>
                 <div class="pillar-card reveal">
                     <div class="pillar-num">03</div>
                     <div class="pillar-title">Consistency Over Hype</div>
-                    <p class="pillar-text">We do not promise exposure. We promise a structured environment where players train with intention, compete with purpose, and improve measurably over time.</p>
+                    <p class="pillar-text">We do not promise exposure. We promise a structured environment where players
+                        train with intention, compete with purpose, and improve measurably over time.</p>
                 </div>
                 <div class="pillar-card reveal">
                     <div class="pillar-num">04</div>
                     <div class="pillar-title">Earned Success</div>
-                    <p class="pillar-text">Playing time, positions, and opportunities are earned through preparation and performance. The players who put in the work see the results. That is the only formula we believe in.</p>
+                    <p class="pillar-text">Playing time, positions, and opportunities are earned through preparation and
+                        performance. The players who put in the work see the results. That is the only formula we
+                        believe in.</p>
                 </div>
                 <div class="pillar-card reveal">
                     <div class="pillar-num">05</div>
                     <div class="pillar-title">Long-Term Development</div>
-                    <p class="pillar-text">We build four-year athletes, not one-season highlights. Our development pathway is designed to take a player from foundational skills through varsity readiness and into college preparation.</p>
+                    <p class="pillar-text">We build four-year athletes, not one-season highlights. Our development
+                        pathway is designed to take a player from foundational skills through varsity readiness and into
+                        college preparation.</p>
                 </div>
                 <div class="pillar-card reveal">
                     <div class="pillar-num">06</div>
                     <div class="pillar-title">Real Coaching</div>
-                    <p class="pillar-text">Our coaches prepare practice plans, study film, and bring structured curricula to every session. We do not run open scrimmages and call it training. Every minute on the field has a purpose.</p>
+                    <p class="pillar-text">Our coaches prepare practice plans, study film, and bring structured
+                        curricula to every session. We do not run open scrimmages and call it training. Every minute on
+                        the field has a purpose.</p>
                 </div>
             </div>
         </div>
@@ -1156,50 +1299,79 @@
             <div class="section-header reveal">
                 <div class="section-tag">Development Model</div>
                 <h2 class="section-title">How BTB Actually Develops Players</h2>
-                <p class="section-subtitle">A structured, repeatable system designed to build complete lacrosse players across every phase of the game.</p>
+                <p class="section-subtitle">A structured, repeatable system designed to build complete lacrosse players
+                    across every phase of the game.</p>
             </div>
             <div class="dev-grid">
                 <div class="dev-card reveal">
                     <div class="dev-card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
                     </div>
                     <h4>Small-Group Training</h4>
-                    <p>Maximum 8:1 player-to-coach ratio during skill sessions. Every player gets individual attention, coaching cues, and real-time correction. No standing in lines. No wasted reps.</p>
+                    <p>Maximum 8:1 player-to-coach ratio during skill sessions. Every player gets individual attention,
+                        coaching cues, and real-time correction. No standing in lines. No wasted reps.</p>
                 </div>
                 <div class="dev-card reveal">
                     <div class="dev-card-icon">
-                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg>
                     </div>
                     <h4>Film Study Integration</h4>
-                    <p>Game and practice film is reviewed weekly. Players learn to see the field, recognize defensive schemes, and make better decisions under pressure. Film is where lacrosse IQ is built.</p>
+                    <p>Game and practice film is reviewed weekly. Players learn to see the field, recognize defensive
+                        schemes, and make better decisions under pressure. Film is where lacrosse IQ is built.</p>
                 </div>
                 <div class="dev-card reveal">
                     <div class="dev-card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
                     </div>
                     <h4>Structured Practice Plans</h4>
-                    <p>Every practice follows a written plan with clear objectives, timed segments, and progressive skill-building. Our curriculum is documented, reviewed, and improved every season.</p>
+                    <p>Every practice follows a written plan with clear objectives, timed segments, and progressive
+                        skill-building. Our curriculum is documented, reviewed, and improved every season.</p>
                 </div>
                 <div class="dev-card reveal">
                     <div class="dev-card-icon">
-                        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                        </svg>
                     </div>
                     <h4>Progressive Skill Phases</h4>
-                    <p>Development is organized into four phases across a 16-week cycle: Foundation, Connection, Expansion, and Execution. Players build skills in sequence, not at random.</p>
+                    <p>Development is organized into four phases across a 16-week cycle: Foundation, Connection,
+                        Expansion, and Execution. Players build skills in sequence, not at random.</p>
                 </div>
                 <div class="dev-card reveal">
                     <div class="dev-card-icon">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
                     </div>
                     <h4>Intentional Repetition</h4>
-                    <p>We track reps, measure progress, and assign specific skill work between sessions. Development is not accidental. It is planned, measured, and held accountable.</p>
+                    <p>We track reps, measure progress, and assign specific skill work between sessions. Development is
+                        not accidental. It is planned, measured, and held accountable.</p>
                 </div>
                 <div class="dev-card reveal">
                     <div class="dev-card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
                     </div>
                     <h4>Complete Player Focus</h4>
-                    <p>Stick skills, shooting, defense, offense, transition, and game IQ are all developed systematically. We build complete players, not one-dimensional athletes.</p>
+                    <p>Stick skills, shooting, defense, offense, transition, and game IQ are all developed
+                        systematically. We build complete players, not one-dimensional athletes.</p>
                 </div>
             </div>
         </div>
@@ -1213,38 +1385,48 @@
             <div class="section-header reveal">
                 <div class="section-tag">Film Study</div>
                 <h2 class="section-title">The Game Is Won Before the Whistle</h2>
-                <p class="section-subtitle">Film study is the single most underused development tool in youth lacrosse. At BTB, it is required. Players who understand the game on film perform at a higher level on the field.</p>
+                <p class="section-subtitle">Film study is the single most underused development tool in youth lacrosse.
+                    At BTB, it is required. Players who understand the game on film perform at a higher level on the
+                    field.</p>
             </div>
             <div class="film-grid">
                 <div class="film-card reveal">
                     <div class="film-card-num">01</div>
                     <h4>Game IQ Development</h4>
-                    <p>Players learn to read defensive formations, recognize slide packages, identify open players, and make faster decisions. This is not guesswork — it is taught through structured film review.</p>
+                    <p>Players learn to read defensive formations, recognize slide packages, identify open players, and
+                        make faster decisions. This is not guesswork — it is taught through structured film review.</p>
                 </div>
                 <div class="film-card reveal">
                     <div class="film-card-num">02</div>
                     <h4>Decision-Making Under Pressure</h4>
-                    <p>Film slows the game down. Players see what happened, why it happened, and what the better decision was. Over time, this translates to faster, more confident play in real time.</p>
+                    <p>Film slows the game down. Players see what happened, why it happened, and what the better
+                        decision was. Over time, this translates to faster, more confident play in real time.</p>
                 </div>
                 <div class="film-card reveal">
                     <div class="film-card-num">03</div>
                     <h4>Accountability Through Review</h4>
-                    <p>Every player sees their own performance. There is no hiding on film. Missed assignments, poor positioning, and lazy habits are identified and corrected. This is how real accountability works.</p>
+                    <p>Every player sees their own performance. There is no hiding on film. Missed assignments, poor
+                        positioning, and lazy habits are identified and corrected. This is how real accountability
+                        works.</p>
                 </div>
                 <div class="film-card reveal">
                     <div class="film-card-num">04</div>
                     <h4>Position-Specific Learning</h4>
-                    <p>Attackmen study feeding angles and shot selection. Middies study transition reads. Defensemen study approach technique and slide timing. Goalies study shot tendencies. Every position has its own film curriculum.</p>
+                    <p>Attackmen study feeding angles and shot selection. Middies study transition reads. Defensemen
+                        study approach technique and slide timing. Goalies study shot tendencies. Every position has its
+                        own film curriculum.</p>
                 </div>
                 <div class="film-card reveal">
                     <div class="film-card-num">05</div>
                     <h4>Self-Scouting</h4>
-                    <p>Players learn to scout themselves — identifying their own tendencies, strengths, and weaknesses. This is the skill that separates college-ready players from everyone else.</p>
+                    <p>Players learn to scout themselves — identifying their own tendencies, strengths, and weaknesses.
+                        This is the skill that separates college-ready players from everyone else.</p>
                 </div>
                 <div class="film-card reveal">
                     <div class="film-card-num">06</div>
                     <h4>Opponent Preparation</h4>
-                    <p>Before key matchups, teams review opponent film. Players learn what to expect and come into games with a plan, not just effort. Preparation replaces guesswork.</p>
+                    <p>Before key matchups, teams review opponent film. Players learn what to expect and come into games
+                        with a plan, not just effort. Preparation replaces guesswork.</p>
                 </div>
             </div>
             <div class="film-positions reveal">
@@ -1269,38 +1451,49 @@
             <div class="section-header reveal">
                 <div class="section-tag">Coaches Hub</div>
                 <h2 class="section-title">Real Coaches. Real Standards.</h2>
-                <p class="section-subtitle">Every coach in this program is held to the same standard as every player. Preparation, accountability, and intentional leadership are not optional.</p>
+                <p class="section-subtitle">Every coach in this program is held to the same standard as every player.
+                    Preparation, accountability, and intentional leadership are not optional.</p>
             </div>
             <div class="coach-grid">
                 <div class="coach-card reveal">
                     <div class="coach-card-bar"></div>
                     <h4>Coaching Philosophy</h4>
-                    <p>Our coaches teach through structure, repetition, and progression. We do not yell from the sideline and hope players figure it out. Every correction comes with a coaching point and a path to improvement.</p>
+                    <p>Our coaches teach through structure, repetition, and progression. We do not yell from the
+                        sideline and hope players figure it out. Every correction comes with a coaching point and a path
+                        to improvement.</p>
                 </div>
                 <div class="coach-card reveal">
                     <div class="coach-card-bar"></div>
                     <h4>Practice Planning</h4>
-                    <p>Coaches submit written practice plans before every session. Each plan follows the seasonal curriculum, includes timed drill segments, and targets specific skills for that phase of development.</p>
+                    <p>Coaches submit written practice plans before every session. Each plan follows the seasonal
+                        curriculum, includes timed drill segments, and targets specific skills for that phase of
+                        development.</p>
                 </div>
                 <div class="coach-card reveal">
                     <div class="coach-card-bar"></div>
                     <h4>Leadership & Accountability</h4>
-                    <p>Coaches are evaluated on player development outcomes, not win-loss records. They lead by example, hold players accountable, and create an environment where serious development happens.</p>
+                    <p>Coaches are evaluated on player development outcomes, not win-loss records. They lead by example,
+                        hold players accountable, and create an environment where serious development happens.</p>
                 </div>
                 <div class="coach-card reveal">
                     <div class="coach-card-bar"></div>
                     <h4>Continuing Education</h4>
-                    <p>All BTB coaches complete US Lacrosse certification, SafeSport training, and internal coaching development. We invest in our coaching staff because the quality of coaching determines the quality of the program.</p>
+                    <p>All BTB coaches complete US Lacrosse certification, SafeSport training, and internal coaching
+                        development. We invest in our coaching staff because the quality of coaching determines the
+                        quality of the program.</p>
                 </div>
                 <div class="coach-card reveal">
                     <div class="coach-card-bar"></div>
                     <h4>50+ Drill Playbook</h4>
-                    <p>Our coaches operate from a shared drillbook with 50+ documented drills across 8 categories. Every drill includes purpose, setup, execution steps, coaching points, and video references.</p>
+                    <p>Our coaches operate from a shared drillbook with 50+ documented drills across 8 categories. Every
+                        drill includes purpose, setup, execution steps, coaching points, and video references.</p>
                 </div>
                 <div class="coach-card reveal">
                     <div class="coach-card-bar"></div>
                     <h4>Background & Safety</h4>
-                    <p>Every coach passes a background check and maintains current SafeSport certification. Player safety is non-negotiable. Parents should never have to wonder about the adults leading their children.</p>
+                    <p>Every coach passes a background check and maintains current SafeSport certification. Player
+                        safety is non-negotiable. Parents should never have to wonder about the adults leading their
+                        children.</p>
                 </div>
             </div>
             <div style="text-align:center" class="reveal">
@@ -1317,11 +1510,14 @@
             <div class="section-header centered reveal">
                 <div class="section-tag">Results</div>
                 <h2 class="section-title">What Families Say About BTB</h2>
-                <p class="section-subtitle">The families who stay understand why this program is different. The results speak for themselves.</p>
+                <p class="section-subtitle">The families who stay understand why this program is different. The results
+                    speak for themselves.</p>
             </div>
             <div class="results-grid">
                 <div class="result-card reveal">
-                    <p class="result-quote">"My son came in as a good athlete who happened to play lacrosse. After two years at BTB, he's a lacrosse player who happens to be a good athlete. The difference is coaching."</p>
+                    <p class="result-quote">"My son came in as a good athlete who happened to play lacrosse. After two
+                        years at BTB, he's a lacrosse player who happens to be a good athlete. The difference is
+                        coaching."</p>
                     <div class="result-author">
                         <div class="result-avatar">JM</div>
                         <div>
@@ -1331,7 +1527,9 @@
                     </div>
                 </div>
                 <div class="result-card reveal">
-                    <p class="result-quote">"The film study changed everything. My daughter started recognizing defensive sets before they developed. Her coaches at the high school level noticed immediately. BTB taught her how to see the game."</p>
+                    <p class="result-quote">"The film study changed everything. My daughter started recognizing
+                        defensive sets before they developed. Her coaches at the high school level noticed immediately.
+                        BTB taught her how to see the game."</p>
                     <div class="result-author">
                         <div class="result-avatar">DR</div>
                         <div>
@@ -1341,7 +1539,9 @@
                     </div>
                 </div>
                 <div class="result-card reveal">
-                    <p class="result-quote">"The private training sessions helped me make varsity as a freshman. The coaches don't just tell you what to do — they explain why and hold you accountable for doing it right."</p>
+                    <p class="result-quote">"The private training sessions helped me make varsity as a freshman. The
+                        coaches don't just tell you what to do — they explain why and hold you accountable for doing it
+                        right."</p>
                     <div class="result-author">
                         <div class="result-avatar">CT</div>
                         <div>
@@ -1366,10 +1566,13 @@
     <section class="cta-section" id="apply">
         <div class="cta-inner reveal">
             <h2>This Is Not a<br><span>Tryout.</span> It's an<br><span>Application.</span></h2>
-            <p>BTB is selective because development requires commitment from players and families. If you are serious about lacrosse and ready to be held accountable, we want to hear from you.</p>
+            <p>BTB is selective because development requires commitment from players and families. If you are serious
+                about lacrosse and ready to be held accountable, we want to hear from you.</p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-primary">Apply for 2026 Season &rarr;</a>
-                <a href="#" class="btn btn-outline">Schedule a Call</a>
+                <a href="mailto:info@bethebestli.com?subject=2026%20Season%20Application" class="btn btn-primary">Apply
+                    for 2026 Season &rarr;</a>
+                <a href="mailto:info@bethebestli.com?subject=Schedule%20a%20Call" class="btn btn-outline">Schedule a
+                    Call</a>
             </div>
         </div>
     </section>
@@ -1379,11 +1582,13 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="#" class="logo">BTB <span>LACROSSE</span></a>
-                <p>A structured lacrosse development program built on accountability, film study, and intentional coaching. Long Island, NY.</p>
+                <p>A structured lacrosse development program built on accountability, film study, and intentional
+                    coaching. Long Island, NY.</p>
                 <div class="footer-social">
-                    <a href="#" title="Instagram">IG</a>
-                    <a href="#" title="Twitter">X</a>
-                    <a href="#" title="YouTube">YT</a>
+                    <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener" title="Instagram"
+                        aria-label="BTB on Instagram">IG</a>
+                    <a href="https://www.youtube.com/@bethebestlacrosse" target="_blank" rel="noopener" title="YouTube"
+                        aria-label="BTB on YouTube">YT</a>
                 </div>
             </div>
             <div class="footer-col">
@@ -1402,9 +1607,9 @@
             </div>
             <div class="footer-col">
                 <h4>Contact</h4>
-                <a href="#">info@bethebestli.com</a>
-                <a href="#">(516) 555-0199</a>
-                <a href="#">Long Island, NY</a>
+                <a href="mailto:info@bethebestli.com">info@bethebestli.com</a>
+                <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener">@bethebestli</a>
+                <a>Long Island, NY</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1413,15 +1618,31 @@
     </footer>
 
     <script>
-        // ── Navbar scroll effect ──
+        // ── Navbar scroll shadow ──
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('navbar');
+            if (window.scrollY > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
         // ── Mobile menu toggle ──
         function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('open');
+            const nav = document.getElementById('navLinks');
+            const btn = document.getElementById('hamburger');
+            nav.classList.toggle('open');
+            btn.classList.toggle('active');
+            const expanded = nav.classList.contains('open');
+            btn.setAttribute('aria-expanded', expanded);
         }
 
         document.querySelectorAll('.btb-nav a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('open');
+                document.getElementById('hamburger').classList.remove('active');
+                document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
             });
         });
 
@@ -1487,4 +1708,5 @@
     </script>
 
 </body>
+
 </html>
