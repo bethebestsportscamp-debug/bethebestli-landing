@@ -5,704 +5,451 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <title>BTB World Series 2026 | Be The Best Lacrosse</title>
-    <meta name="description" content="BTB World Series — the premier youth lacrosse tournament featuring elite boys and girls divisions. Long Island, NY.">
+    <meta name="description" content="BTB World Series 2026 — Long Island's premier youth lacrosse championship. 64+ teams, 13 divisions, three days of elite competition.">
+    <meta name="theme-color" content="#D22630">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="shared.css">
     <style>
-        /* ── Page-specific variables ── */
-        :root {
-            --gold: #C5A44E;
-            --gold-dark: #A8893A;
-        }
-
-        /* ── Header overrides ── */
-        .btb-header {
-            padding: 12px 24px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .btb-logo img {
-            width: auto;
-        }
-
-        .btb-nav {
-            gap: 32px;
-        }
-
-        .btb-nav a {
-            transition: color 0.2s ease;
-        }
-
-        /* ── Hero ── */
+        /* ========================================
+           HERO
+           ======================================== */
         .hero {
             position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
             color: var(--white);
             overflow: hidden;
+            padding: 140px 24px 80px;
         }
 
-        .hero-bg {
+        .hero__bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(160deg, #000000 0%, #0d0d0d 50%, #000000 100%);
+            background: linear-gradient(160deg, #0a0a0a 0%, #111 40%, #0a0a0a 100%);
             z-index: 0;
         }
 
-        .hero-bg::before {
+        .hero__bg::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 20% 80%, rgba(210, 38, 48, 0.18) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 20%, rgba(210, 38, 48, 0.08) 0%, transparent 50%);
-            z-index: 2;
+            background: radial-gradient(ellipse at 30% 70%, rgba(197, 164, 78, 0.12) 0%, transparent 55%),
+                        radial-gradient(ellipse at 70% 30%, rgba(197, 164, 78, 0.06) 0%, transparent 50%);
         }
 
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            z-index: 3;
-        }
-
-        .hero-particles {
-            position: absolute;
-            inset: 0;
-            z-index: 3;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(210, 38, 48, 0.35);
-            border-radius: 50%;
-            animation: float 8s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-100vh); opacity: 0; }
-        }
-
-        .hero-inner {
+        .hero__inner {
             position: relative;
-            z-index: 4;
+            z-index: 1;
             max-width: 800px;
-            padding: 2rem 2rem 2rem;
-            text-align: center;
         }
 
-        .hero-badge {
+        .hero__badge {
             display: inline-block;
-            border: 1px solid rgba(210, 38, 48, 0.4);
-            color: rgba(255,255,255,0.7);
-            padding: 0.35rem 1.2rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 1.2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.8s forwards 0.3s;
-        }
-
-        .hero h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 700;
-            line-height: 0.95;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.8s forwards 0.5s;
-        }
-
-        .hero h1 .highlight { color: var(--primary); }
-
-        .hero-sub {
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.55);
-            max-width: 540px;
-            margin: 0 auto 1.5rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.8s forwards 0.7s;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.8s forwards 0.9s;
-        }
-
-        .hero-proof {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-top: 2rem;
-            opacity: 0;
-            animation: fadeUp 0.8s forwards 1.2s;
-        }
-
-        .hero-proof-item { text-align: center; }
-
-        .hero-proof-num {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            color: var(--primary);
-            line-height: 1;
-        }
-
-        .hero-proof-label {
-            font-size: 0.65rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.35);
-            margin-top: 0.2rem;
-        }
-
-        /* Countdown */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            opacity: 0;
-            animation: fadeUp 0.8s forwards 1.4s;
-        }
-
-        .countdown-block {
-            text-align: center;
-            min-width: 60px;
-        }
-
-        .countdown-num {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.2rem;
-            color: var(--white);
-            line-height: 1;
-            background: rgba(210, 38, 48, 0.15);
-            border: 1px solid rgba(210, 38, 48, 0.3);
-            border-radius: 6px;
-            padding: 0.5rem 0.6rem;
-        }
-
-        .countdown-label {
-            font-size: 0.6rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.35);
-            margin-top: 0.4rem;
-        }
-
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ── Page-specific Buttons ── */
-        .btn-dark {
-            background: var(--dark);
-            color: var(--white);
-        }
-
-        .btn-dark:hover {
-            background: #1a1a1a;
-            transform: translateY(-2px);
-        }
-
-        /* ── Shared Section Styles ── */
-        section {
-            padding: 6rem 2rem;
-        }
-
-        .section-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            margin-bottom: 3.5rem;
-        }
-
-        .section-header.centered { text-align: center; }
-
-        .section-tag {
-            font-size: 0.7rem;
+            border: 1px solid rgba(197, 164, 78, 0.5);
+            background: rgba(197, 164, 78, 0.1);
+            color: var(--gold);
+            padding: 6px 20px;
+            font-size: 0.68rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 4px;
-            color: var(--primary);
-            margin-bottom: 0.8rem;
+            border-radius: 2px;
+            margin-bottom: 16px;
+            font-family: var(--font-body);
         }
 
-        .section-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--dark);
-            margin-bottom: 1rem;
+        .hero__title {
+            font-size: clamp(3rem, 7vw, 5.5rem);
             line-height: 1;
-        }
-
-        .section-subtitle {
-            font-size: 0.95rem;
-            color: var(--gray);
-            max-width: 580px;
-            line-height: 1.7;
-        }
-
-        .section-header.centered .section-subtitle {
-            margin: 0 auto;
-        }
-
-        /* ── Dark Section ── */
-        .section-dark {
-            background: var(--dark);
+            margin-bottom: 20px;
+            letter-spacing: 3px;
             color: var(--white);
         }
 
-        .section-dark .section-title { color: var(--white); }
-        .section-dark .section-subtitle { color: rgba(255,255,255,0.5); }
-
-        /* ── Alt Section ── */
-        .section-alt { background: var(--off-white); }
-
-        /* ── About Section ── */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+        .hero__title span {
+            color: var(--gold);
         }
 
-        .about-card {
-            padding: 2rem 1.5rem;
-            border: 1px solid #e8e8e8;
-            border-radius: 8px;
-            background: var(--white);
-            transition: all 0.3s;
+        .hero__subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.55);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+            font-weight: 400;
         }
 
-        .about-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transform: translateY(-4px);
-        }
-
-        .about-card-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--dark);
-            border-radius: 8px;
+        .hero__stats {
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin-bottom: 1.2rem;
+            gap: 48px;
+            margin-top: 40px;
         }
 
-        .about-card-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--primary);
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        .hero__stat {
+            text-align: center;
         }
 
-        .about-card h4 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.15rem;
+        .hero__stat-number {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .hero__stat-label {
+            font-size: 0.68rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.35);
+            margin-top: 6px;
         }
 
-        .about-card p {
-            font-size: 0.85rem;
-            color: var(--gray);
-            line-height: 1.65;
+        /* ========================================
+           DIVISIONS
+           ======================================== */
+        .divisions {
+            padding: 100px 0;
+            background: var(--gray-900);
+            color: var(--white);
         }
 
-        /* ── Divisions Section ── */
-        .divisions-label {
-            font-family: 'Bebas Neue', sans-serif;
+        .divisions__header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .divisions__columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .divisions__col-title {
+            font-family: var(--font-heading);
             font-size: 1.6rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--primary);
-            margin-bottom: 1.2rem;
-            margin-top: 2.5rem;
+            color: var(--red);
+            margin-bottom: 20px;
         }
 
-        .divisions-label:first-of-type {
-            margin-top: 0;
-        }
-
-        .division-grid {
+        .divisions__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1rem;
+            gap: 12px;
         }
 
         .division-card {
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.04);
-            transition: all 0.3s;
+            padding: 20px 24px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s var(--ease);
         }
 
         .division-card:hover {
-            border-color: var(--primary);
+            border-color: var(--red);
             background: rgba(210, 38, 48, 0.05);
-            transform: translateY(-4px);
+            transform: translateY(-2px);
         }
 
-        .division-card h4 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem;
+        .division-card__name {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--white);
-            margin-bottom: 0.6rem;
         }
 
-        .division-meta {
+        .division-card__meta {
+            text-align: right;
             font-size: 0.78rem;
-            color: rgba(255,255,255,0.45);
-            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.6;
         }
 
-        .division-meta span {
+        .division-card__meta span {
             display: block;
         }
 
-        .division-card .register-link {
-            display: inline-block;
-            margin-top: 0.8rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+        /* ========================================
+           FORMAT
+           ======================================== */
+        .format {
+            padding: 100px 0;
+            background: var(--gray-50);
         }
 
-        .division-card .register-link:hover {
-            color: #ff3b47;
-        }
-
-        /* ── Schedule Section ── */
-        .schedule-intro {
-            font-size: 0.92rem;
-            color: var(--gray);
-            line-height: 1.7;
-            max-width: 640px;
-            margin-bottom: 2.5rem;
-        }
-
-        .format-steps {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .format-step {
-            flex: 1;
-            min-width: 200px;
+        .format__header {
             text-align: center;
-            position: relative;
+            margin-bottom: 48px;
         }
 
-        .format-step-num {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
-            color: var(--primary);
-            opacity: 0.3;
-            line-height: 1;
-        }
-
-        .format-step h4 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0.3rem 0;
-        }
-
-        .format-step p {
-            font-size: 0.82rem;
-            color: var(--gray);
-            line-height: 1.5;
-        }
-
-        .timeline-grid {
+        .format__cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 24px;
         }
 
-        .timeline-card {
-            padding: 2rem 1.5rem;
-            border: 1px solid #e8e8e8;
-            border-radius: 8px;
+        .format-card {
             background: var(--white);
-            transition: all 0.3s;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-100);
+            padding: 36px 28px;
+            text-align: center;
+            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
         }
 
-        .timeline-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        .format-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .timeline-card-day {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            color: var(--primary);
+        .format-card__step {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--red);
+            opacity: 0.25;
             line-height: 1;
-            margin-bottom: 0.3rem;
+            margin-bottom: 8px;
         }
 
-        .timeline-card-date {
-            font-size: 0.75rem;
-            font-weight: 600;
+        .format-card__title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gray);
-            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: var(--gray-900);
         }
 
-        .timeline-card p {
+        .format-card__text {
             font-size: 0.85rem;
-            color: var(--gray);
+            color: var(--gray-500);
             line-height: 1.65;
         }
 
-        /* ── Champions Section ── */
-        .champions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .champion-card {
-            padding: 2rem 1.5rem;
-            border-radius: 8px;
-            border: 1px solid rgba(197, 164, 78, 0.2);
-            background: rgba(197, 164, 78, 0.04);
-            transition: all 0.3s;
-        }
-
-        .champion-card:hover {
-            border-color: var(--gold);
-            background: rgba(197, 164, 78, 0.08);
-            transform: translateY(-4px);
-        }
-
-        .champion-year {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--gold);
-            line-height: 1;
-            margin-bottom: 1rem;
-        }
-
-        .champion-division {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--white);
-            margin-bottom: 0.3rem;
-        }
-
-        .champion-team {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 0.8rem;
-        }
-
-        .champion-trophy {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gold);
-        }
-
-        /* ── Venue Section ── */
-        .venue-content {
-            margin-bottom: 2.5rem;
-        }
-
-        .venue-name {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .venue-address {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
-        .venue-desc {
-            font-size: 0.9rem;
-            color: var(--gray);
-            line-height: 1.7;
-            max-width: 600px;
-        }
-
-        .venue-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .venue-info-card {
-            padding: 1.5rem;
-            border: 1px solid #e8e8e8;
-            border-radius: 8px;
+        /* ========================================
+           SCHEDULE
+           ======================================== */
+        .schedule {
+            padding: 100px 0;
             background: var(--white);
+        }
+
+        .schedule__header {
             text-align: center;
-            transition: all 0.3s;
+            margin-bottom: 48px;
         }
 
-        .venue-info-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        }
-
-        .venue-info-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--dark);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-        }
-
-        .venue-info-icon svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--primary);
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .venue-info-card h4 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.4rem;
-        }
-
-        .venue-info-card p {
-            font-size: 0.82rem;
-            color: var(--gray);
-            line-height: 1.5;
-        }
-
-        /* ── Registration CTA ── */
-        .register-section {
-            background: var(--dark);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .register-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(210,38,48,0.12) 0%, transparent 60%);
-        }
-
-        .register-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .register-form {
+        .schedule__cards {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
-            text-align: left;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
-        .register-form .full-width {
-            grid-column: 1 / -1;
+        .schedule-card {
+            padding: 32px 28px;
+            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-md);
+            background: var(--white);
+            transition: all 0.3s var(--ease);
         }
 
-        .register-form label {
+        .schedule-card:hover {
+            border-color: var(--red);
+            box-shadow: var(--shadow-md);
+        }
+
+        .schedule-card__day {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--red);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .schedule-card__date {
             font-size: 0.72rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 0.3rem;
-            display: block;
+            color: var(--gray-400);
+            margin-bottom: 16px;
         }
 
-        .register-form input,
-        .register-form select {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 6px;
-            color: var(--white);
-            font-family: 'Montserrat', sans-serif;
+        .schedule-card__text {
             font-size: 0.85rem;
-            transition: border-color 0.3s;
+            color: var(--gray-500);
+            line-height: 1.65;
         }
 
-        .register-form input::placeholder {
-            color: rgba(255,255,255,0.3);
+        /* ========================================
+           VENUE
+           ======================================== */
+        .venue {
+            padding: 100px 0;
+            background: var(--gray-900);
+            color: var(--white);
         }
 
-        .register-form input:focus,
-        .register-form select:focus {
+        .venue__header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .venue__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .venue-card {
+            background: var(--gray-800);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-md);
+            padding: 28px 24px;
+            text-align: center;
+            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+        }
+
+        .venue-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .venue-card__icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(210, 38, 48, 0.12);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .venue-card__icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--red);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .venue-card__title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            color: var(--white);
+        }
+
+        .venue-card__text {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.45);
+            line-height: 1.55;
+        }
+
+        /* ========================================
+           HALL OF CHAMPIONS
+           ======================================== */
+        .champions {
+            padding: 100px 0;
+            background: var(--gray-50);
+        }
+
+        .champions__header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        /* ========================================
+           REGISTRATION
+           ======================================== */
+        .register {
+            padding: 100px 0;
+            background: var(--gray-900);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(210, 38, 48, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .register__inner {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .register__form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 32px;
+            text-align: left;
+        }
+
+        .register__form .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .register__form label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 6px;
+        }
+
+        .register__form input,
+        .register__form select {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-sm);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            transition: border-color 0.2s var(--ease);
             outline: none;
-            border-color: var(--primary);
         }
 
-        .register-form select {
+        .register__form input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .register__form input:focus,
+        .register__form select:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px rgba(210, 38, 48, 0.15);
+        }
+
+        .register__form select {
             appearance: none;
             cursor: pointer;
             background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='2' fill='none'/%3E%3C/svg%3E");
@@ -710,561 +457,452 @@
             background-position: right 1rem center;
         }
 
-        .register-form select option {
+        .register__form select option {
             background: #1a1a1a;
             color: var(--white);
         }
 
-        .form-error {
+        .form-field__error {
             font-size: 0.72rem;
-            color: var(--primary);
-            margin-top: 0.2rem;
+            color: var(--red);
+            margin-top: 4px;
             display: none;
         }
 
-        .form-group.error .form-error {
+        .form-field.has-error .form-field__error {
             display: block;
         }
 
-        .form-group.error input,
-        .form-group.error select {
-            border-color: var(--primary);
+        .form-field.has-error input,
+        .form-field.has-error select {
+            border-color: var(--red);
         }
 
-        .register-submit {
-            grid-column: 1 / -1;
-            margin-top: 0.5rem;
-        }
-
-        .register-contact {
+        .register__contact {
             grid-column: 1 / -1;
             text-align: center;
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 8px;
         }
 
-        .register-contact a {
-            color: var(--primary);
+        .register__contact a {
+            color: var(--red);
             font-weight: 600;
-            transition: color 0.3s;
+            transition: color 0.2s var(--ease);
         }
 
-        .register-contact a:hover {
-            color: #ff3b47;
+        .register__contact a:hover {
+            color: var(--red-light);
         }
 
-        /* ── Footer overrides ── */
-        .footer-brand .logo {
-            letter-spacing: 2px;
-        }
-
-        .footer-brand .logo span {
-            font-weight: 400;
-        }
-
-        /* ── Animations ── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ── Responsive ── */
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
         @media (max-width: 768px) {
-            .hero-inner { padding: 5rem 1.5rem 3rem; }
-            .hero-proof { gap: 1.5rem; flex-wrap: wrap; }
-            .hero-proof-num { font-size: 1.5rem; }
-            .countdown { gap: 0.8rem; }
-            .countdown-num { font-size: 1.6rem; padding: 0.4rem; }
+            .hero { padding: 120px 20px 60px; }
+            .hero__stats { gap: 24px; flex-wrap: wrap; }
 
-            section { padding: 4rem 1.5rem; }
+            .divisions__columns { grid-template-columns: 1fr; gap: 32px; }
 
-            .about-grid,
-            .timeline-grid { grid-template-columns: 1fr; }
+            .format__cards,
+            .schedule__cards { grid-template-columns: 1fr; }
 
-            .division-grid { grid-template-columns: 1fr 1fr; }
+            .venue__grid { grid-template-columns: 1fr 1fr; }
 
-            .venue-grid { grid-template-columns: 1fr 1fr; }
-
-            .format-steps { flex-direction: column; gap: 1.5rem; }
-
-            .champions-grid { grid-template-columns: 1fr; }
-
-            .register-form { grid-template-columns: 1fr; }
+            .register__form { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 480px) {
-            .division-grid { grid-template-columns: 1fr; }
-            .venue-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .about-grid,
-            .timeline-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero__stats { gap: 16px; }
+            .venue__grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="btb-header" id="navbar">
-        <a href="index.html" class="btb-logo">
-            <img src="assets/B 3d Metal Logo copy.png" alt="Be The Best Lacrosse">
-        </a>
-        <nav class="btb-nav" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="players-hub.html">Players Hub</a>
-            <a href="world-series.html">World Series</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="coach-bios.html">Coaches</a>
-            <a href="faq.html">FAQ</a>
-            <a href="mailto:info@bethebestli.com?subject=BTB%20Registration" class="btb-cta">Register Now</a>
-        </nav>
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
+    <!-- ═══════════════════════════════════════
+         HEADER
+         ═══════════════════════════════════════ -->
+    <header class="header" id="navbar">
+        <div class="header__inner">
+            <a href="index.html" class="header__logo">
+                <img src="assets/B 3d Metal Logo copy.png" alt="BTB Lacrosse — Home">
+            </a>
+            <nav class="nav" id="navLinks" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="players-hub.html">Players Hub</a>
+                <a href="world-series.html" class="active" aria-current="page">World Series</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="coach-bios.html">Coaches</a>
+                <a href="faq.html">FAQ</a>
+                <a href="mailto:info@bethebestli.com?subject=BTB%20Registration" class="nav__cta">Register Now</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
-    <!-- ═══════════════════════════════════════════
-         SECTION 1 — HERO
-         ═══════════════════════════════════════════ -->
+    <!-- ═══════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════ -->
     <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-particles" id="particles"></div>
-        <div class="hero-inner">
-            <div class="hero-badge">National Tournament</div>
-            <h1>BTB <span class="highlight">WORLD SERIES</span> 2026</h1>
-            <p class="hero-sub">The premier youth lacrosse championship bringing together elite boys and girls teams from across the country. Three days. One champion.</p>
-            <div class="hero-buttons">
-                <a href="#register" class="btn btn-primary">Register Your Team &rarr;</a>
-                <a href="#divisions" class="btn btn-outline">View Divisions</a>
-            </div>
-            <div class="hero-proof">
-                <div class="hero-proof-item">
-                    <div class="hero-proof-num">64+</div>
-                    <div class="hero-proof-label">Teams</div>
+        <div class="hero__bg"></div>
+        <div class="hero__inner fade-in">
+            <div class="hero__badge">Championship</div>
+            <h1 class="hero__title">BTB <span>WORLD SERIES</span> 2026</h1>
+            <p class="hero__subtitle">Long Island's premier youth lacrosse championship. Three days. 64+ teams. 13 divisions. One champion per division.</p>
+            <div class="hero__stats">
+                <div class="hero__stat">
+                    <div class="hero__stat-number">64+</div>
+                    <div class="hero__stat-label">Teams</div>
                 </div>
-                <div class="hero-proof-item">
-                    <div class="hero-proof-num">13</div>
-                    <div class="hero-proof-label">Divisions</div>
+                <div class="hero__stat">
+                    <div class="hero__stat-number">13</div>
+                    <div class="hero__stat-label">Divisions</div>
                 </div>
-                <div class="hero-proof-item">
-                    <div class="hero-proof-num">3</div>
-                    <div class="hero-proof-label">Days</div>
-                </div>
-                <div class="hero-proof-item">
-                    <div class="hero-proof-num">2024</div>
-                    <div class="hero-proof-label">Est.</div>
-                </div>
-            </div>
-            <div class="countdown" id="countdown">
-                <div class="countdown-block">
-                    <div class="countdown-num" id="cd-days">--</div>
-                    <div class="countdown-label">Days</div>
-                </div>
-                <div class="countdown-block">
-                    <div class="countdown-num" id="cd-hours">--</div>
-                    <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-block">
-                    <div class="countdown-num" id="cd-mins">--</div>
-                    <div class="countdown-label">Mins</div>
-                </div>
-                <div class="countdown-block">
-                    <div class="countdown-num" id="cd-secs">--</div>
-                    <div class="countdown-label">Secs</div>
+                <div class="hero__stat">
+                    <div class="hero__stat-number">3</div>
+                    <div class="hero__stat-label">Days</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         SECTION 2 — ABOUT
-         ═══════════════════════════════════════════ -->
-    <section class="section-alt" id="about">
-        <div class="section-inner">
-            <div class="section-header centered reveal">
-                <div class="section-tag">About the Tournament</div>
-                <h2 class="section-title">Where Elite Teams Compete</h2>
-                <p class="section-subtitle">The BTB World Series brings together the most competitive youth lacrosse programs for a weekend of high-level play, college exposure, and championship-caliber competition.</p>
+    <!-- ═══════════════════════════════════════
+         DIVISIONS
+         ═══════════════════════════════════════ -->
+    <section class="divisions" id="divisions">
+        <div class="container">
+            <div class="divisions__header fade-in">
+                <div class="section__tag">Age Groups</div>
+                <h2 class="section__title">DIVISIONS</h2>
             </div>
-            <div class="about-grid">
-                <div class="about-card reveal">
-                    <div class="about-card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div class="divisions__columns">
+                <!-- Boys -->
+                <div class="fade-in">
+                    <div class="divisions__col-title">Boys Divisions</div>
+                    <div class="divisions__grid">
+                        <div class="division-card">
+                            <div class="division-card__name">2028 Boys</div>
+                            <div class="division-card__meta">
+                                <span>16 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2029 Boys</div>
+                            <div class="division-card__meta">
+                                <span>16 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2030 Boys</div>
+                            <div class="division-card__meta">
+                                <span>16 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2031 Boys</div>
+                            <div class="division-card__meta">
+                                <span>12 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2032 Boys</div>
+                            <div class="division-card__meta">
+                                <span>12 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2033 Boys</div>
+                            <div class="division-card__meta">
+                                <span>12 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2034 Boys</div>
+                            <div class="division-card__meta">
+                                <span>12 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
                     </div>
-                    <h4>Elite Competition</h4>
-                    <p>Top-tier teams from across the region compete in age-specific brackets designed to challenge every roster and elevate the level of play.</p>
                 </div>
-                <div class="about-card reveal">
-                    <div class="about-card-icon">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <!-- Girls -->
+                <div class="fade-in">
+                    <div class="divisions__col-title">Girls Divisions</div>
+                    <div class="divisions__grid">
+                        <div class="division-card">
+                            <div class="division-card__name">2028 Girls</div>
+                            <div class="division-card__meta">
+                                <span>16 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2029 Girls</div>
+                            <div class="division-card__meta">
+                                <span>16 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2030 Girls</div>
+                            <div class="division-card__meta">
+                                <span>16 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2031 Girls</div>
+                            <div class="division-card__meta">
+                                <span>12 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2032 Girls</div>
+                            <div class="division-card__meta">
+                                <span>12 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
+                        <div class="division-card">
+                            <div class="division-card__name">2033 Girls</div>
+                            <div class="division-card__meta">
+                                <span>12 Teams</span>
+                                <span>Entry: TBD</span>
+                            </div>
+                        </div>
                     </div>
-                    <h4>Exposure</h4>
-                    <p>College coaches, scouts, and recruiters attend the World Series to evaluate top talent. Put your players on the national stage.</p>
-                </div>
-                <div class="about-card reveal">
-                    <div class="about-card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/><path d="M12 3v12"/><path d="M5 21h14"/></svg>
-                    </div>
-                    <h4>Championship Culture</h4>
-                    <p>From opening ceremonies to the final whistle, every detail is built to deliver a championship-level experience for players and families.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         SECTION 3 — DIVISIONS
-         ═══════════════════════════════════════════ -->
-    <section class="section-dark" id="divisions">
-        <div class="section-inner">
-            <div class="section-header centered reveal">
-                <div class="section-tag">Age Groups</div>
-                <h2 class="section-title">Boys &amp; Girls Brackets</h2>
-                <p class="section-subtitle">Competitive divisions for graduating classes 2028 through 2034. Each bracket is capped to ensure quality matchups and maximum playing time.</p>
-            </div>
-
-            <!-- Boys Divisions -->
-            <div class="divisions-label reveal">Boys Divisions</div>
-            <div class="division-grid reveal">
-                <div class="division-card">
-                    <h4>2028</h4>
-                    <div class="division-meta">
-                        <span>Ages 14–15</span>
-                        <span>16 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2029</h4>
-                    <div class="division-meta">
-                        <span>Ages 13–14</span>
-                        <span>16 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2030</h4>
-                    <div class="division-meta">
-                        <span>Ages 12–13</span>
-                        <span>16 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2031</h4>
-                    <div class="division-meta">
-                        <span>Ages 11–12</span>
-                        <span>12 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2032</h4>
-                    <div class="division-meta">
-                        <span>Ages 10–11</span>
-                        <span>12 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2033</h4>
-                    <div class="division-meta">
-                        <span>Ages 9–10</span>
-                        <span>12 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2034</h4>
-                    <div class="division-meta">
-                        <span>Ages 8–9</span>
-                        <span>12 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-            </div>
-
-            <!-- Girls Divisions -->
-            <div class="divisions-label reveal">Girls Divisions</div>
-            <div class="division-grid reveal">
-                <div class="division-card">
-                    <h4>2028</h4>
-                    <div class="division-meta">
-                        <span>Ages 14–15</span>
-                        <span>12 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2029</h4>
-                    <div class="division-meta">
-                        <span>Ages 13–14</span>
-                        <span>12 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2030</h4>
-                    <div class="division-meta">
-                        <span>Ages 12–13</span>
-                        <span>12 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2031</h4>
-                    <div class="division-meta">
-                        <span>Ages 11–12</span>
-                        <span>12 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2032</h4>
-                    <div class="division-meta">
-                        <span>Ages 10–11</span>
-                        <span>12 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
-                </div>
-                <div class="division-card">
-                    <h4>2033</h4>
-                    <div class="division-meta">
-                        <span>Ages 9–10</span>
-                        <span>12 Team Cap</span>
-                        <span>Entry: $TBD</span>
-                    </div>
-                    <a href="#register" class="register-link">Register &rarr;</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         SECTION 4 — SCHEDULE & FORMAT
-         ═══════════════════════════════════════════ -->
-    <section class="section-alt" id="schedule">
-        <div class="section-inner">
-            <div class="section-header centered reveal">
-                <div class="section-tag">Tournament Format</div>
-                <h2 class="section-title">Schedule &amp; Format</h2>
-                <p class="section-subtitle">A structured three-day format designed to crown a true champion through pool play, bracket seeding, and single-elimination playoffs.</p>
+    <!-- ═══════════════════════════════════════
+         TOURNAMENT FORMAT
+         ═══════════════════════════════════════ -->
+    <section class="format" id="format">
+        <div class="container">
+            <div class="format__header fade-in">
+                <div class="section__tag">How It Works</div>
+                <h2 class="section__title">TOURNAMENT FORMAT</h2>
             </div>
-
-            <div class="format-steps reveal">
-                <div class="format-step">
-                    <div class="format-step-num">01</div>
-                    <h4>Pool Play</h4>
-                    <p>Round-robin games to establish bracket seeding and ensure every team plays multiple games.</p>
+            <div class="format__cards stagger">
+                <div class="format-card">
+                    <div class="format-card__step">01</div>
+                    <h3 class="format-card__title">Pool Play</h3>
+                    <p class="format-card__text">Round-robin games to establish bracket seeding and ensure every team plays multiple competitive games.</p>
                 </div>
-                <div class="format-step">
-                    <div class="format-step-num">02</div>
-                    <h4>Bracket Play</h4>
-                    <p>Single-elimination brackets based on pool play results. Win or go home.</p>
+                <div class="format-card">
+                    <div class="format-card__step">02</div>
+                    <h3 class="format-card__title">Bracket Play</h3>
+                    <p class="format-card__text">Single-elimination brackets based on pool play results. Every game matters. Win or go home.</p>
                 </div>
-                <div class="format-step">
-                    <div class="format-step-num">03</div>
-                    <h4>Championship</h4>
-                    <p>Division finals on championship Sunday under the lights. Trophies, MVP awards, and bragging rights.</p>
-                </div>
-            </div>
-
-            <div class="timeline-grid reveal">
-                <div class="timeline-card">
-                    <div class="timeline-card-day">Day 1</div>
-                    <div class="timeline-card-date">Date TBD</div>
-                    <p>Team check-in, opening ceremonies, and pool play games. All divisions begin round-robin competition.</p>
-                </div>
-                <div class="timeline-card">
-                    <div class="timeline-card-day">Day 2</div>
-                    <div class="timeline-card-date">Date TBD</div>
-                    <p>Final pool play games and bracket seeding. Quarterfinal and semifinal rounds begin across all divisions.</p>
-                </div>
-                <div class="timeline-card">
-                    <div class="timeline-card-day">Day 3</div>
-                    <div class="timeline-card-date">Date TBD</div>
-                    <p>Championship Sunday. Division finals, MVP awards, and closing ceremonies. Champions crowned.</p>
+                <div class="format-card">
+                    <div class="format-card__step">03</div>
+                    <h3 class="format-card__title">Championship</h3>
+                    <p class="format-card__text">Division finals on Sunday with MVP awards and trophies. Champions crowned in every division.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         SECTION 5 — PAST CHAMPIONS
-         ═══════════════════════════════════════════ -->
-    <section class="section-dark" id="champions">
-        <div class="section-inner">
-            <div class="section-header centered reveal">
-                <div class="section-tag">Hall of Champions</div>
-                <h2 class="section-title">World Series History</h2>
-                <p class="section-subtitle">Honoring the teams that battled through the bracket and earned the title of World Series Champion.</p>
+    <!-- ═══════════════════════════════════════
+         EVENT SCHEDULE
+         ═══════════════════════════════════════ -->
+    <section class="schedule" id="schedule">
+        <div class="container">
+            <div class="schedule__header fade-in">
+                <div class="section__tag">Three Days</div>
+                <h2 class="section__title">EVENT SCHEDULE</h2>
             </div>
-            <div class="champions-grid reveal">
-                <div class="champion-card">
-                    <div class="champion-year">2025</div>
-                    <div class="champion-division">2028 Boys</div>
-                    <div class="champion-team">Champion TBD</div>
-                    <div class="champion-trophy">World Series Champion</div>
+            <div class="schedule__cards stagger">
+                <div class="schedule-card">
+                    <div class="schedule-card__day">Day 1</div>
+                    <div class="schedule-card__date">Date TBD</div>
+                    <p class="schedule-card__text">Team check-in, opening ceremonies, and pool play games. All divisions begin round-robin competition.</p>
                 </div>
-                <div class="champion-card">
-                    <div class="champion-year">2025</div>
-                    <div class="champion-division">2029 Boys</div>
-                    <div class="champion-team">Champion TBD</div>
-                    <div class="champion-trophy">World Series Champion</div>
+                <div class="schedule-card">
+                    <div class="schedule-card__day">Day 2</div>
+                    <div class="schedule-card__date">Date TBD</div>
+                    <p class="schedule-card__text">Final pool play games and bracket seeding. Quarterfinal and semifinal rounds begin across all divisions.</p>
                 </div>
-                <div class="champion-card">
-                    <div class="champion-year">2025</div>
-                    <div class="champion-division">2030 Boys</div>
-                    <div class="champion-team">Champion TBD</div>
-                    <div class="champion-trophy">World Series Champion</div>
-                </div>
-                <div class="champion-card">
-                    <div class="champion-year">2024</div>
-                    <div class="champion-division">2028 Boys</div>
-                    <div class="champion-team">Champion TBD</div>
-                    <div class="champion-trophy">World Series Champion</div>
-                </div>
-                <div class="champion-card">
-                    <div class="champion-year">2024</div>
-                    <div class="champion-division">2029 Boys</div>
-                    <div class="champion-team">Champion TBD</div>
-                    <div class="champion-trophy">World Series Champion</div>
-                </div>
-                <div class="champion-card">
-                    <div class="champion-year">2024</div>
-                    <div class="champion-division">2030 Boys</div>
-                    <div class="champion-team">Champion TBD</div>
-                    <div class="champion-trophy">World Series Champion</div>
+                <div class="schedule-card">
+                    <div class="schedule-card__day">Day 3</div>
+                    <div class="schedule-card__date">Date TBD</div>
+                    <p class="schedule-card__text">Championship Sunday -- division finals, MVP awards, and closing ceremonies. Champions crowned.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         SECTION 6 — VENUE & LOGISTICS
-         ═══════════════════════════════════════════ -->
-    <section class="section-alt" id="venue">
-        <div class="section-inner">
-            <div class="section-header reveal">
-                <div class="section-tag">Tournament Venue</div>
-                <h2 class="section-title">Location &amp; Logistics</h2>
+    <!-- ═══════════════════════════════════════
+         VENUE & LOGISTICS
+         ═══════════════════════════════════════ -->
+    <section class="venue" id="venue">
+        <div class="container">
+            <div class="venue__header fade-in">
+                <div class="section__tag">Tournament Venue</div>
+                <h2 class="section__title" style="color: var(--white);">VENUE &amp; LOGISTICS</h2>
             </div>
-            <div class="venue-content reveal">
-                <h3 class="venue-name">Venue Name TBD</h3>
-                <p class="venue-address">Address TBD &middot; Long Island, NY</p>
-                <p class="venue-desc">Multi-field complex with championship-level turf fields, covered spectator areas, and full concession facilities. Conveniently located near major highways with ample parking and nearby hotel accommodations.</p>
-            </div>
-            <div class="venue-grid reveal">
-                <div class="venue-info-card">
-                    <div class="venue-info-icon">
-                        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <div class="venue__grid stagger">
+                <div class="venue-card">
+                    <div class="venue-card__icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
-                    <h4>Hotels</h4>
-                    <p>Partner hotel block with discounted rates available. Details coming soon.</p>
+                    <h4 class="venue-card__title">Location</h4>
+                    <p class="venue-card__text">Long Island, NY (venue TBD)</p>
                 </div>
-                <div class="venue-info-card">
-                    <div class="venue-info-icon">
-                        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                    </div>
-                    <h4>Parking</h4>
-                    <p>Free on-site parking for all participants and spectators.</p>
-                </div>
-                <div class="venue-info-card">
-                    <div class="venue-info-icon">
+                <div class="venue-card">
+                    <div class="venue-card__icon">
                         <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
                     </div>
-                    <h4>Fields</h4>
-                    <p>Championship-grade turf fields with regulation markings and professional officiating.</p>
+                    <h4 class="venue-card__title">Facilities</h4>
+                    <p class="venue-card__text">Championship-grade turf fields, covered spectator areas, concessions</p>
                 </div>
-                <div class="venue-info-card">
-                    <div class="venue-info-icon">
+                <div class="venue-card">
+                    <div class="venue-card__icon">
+                        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    </div>
+                    <h4 class="venue-card__title">Parking</h4>
+                    <p class="venue-card__text">Free on-site parking for all participants and spectators</p>
+                </div>
+                <div class="venue-card">
+                    <div class="venue-card__icon">
+                        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h4 class="venue-card__title">Hotels</h4>
+                    <p class="venue-card__text">Partner hotel block with discounted rates (coming soon)</p>
+                </div>
+                <div class="venue-card">
+                    <div class="venue-card__icon">
                         <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
-                    <h4>Spectators</h4>
-                    <p>Sideline seating, shaded areas, food vendors, and a tournament merchandise tent.</p>
+                    <h4 class="venue-card__title">Officiating</h4>
+                    <p class="venue-card__text">Professional referees for all divisions and rounds</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         SECTION 7 — REGISTRATION CTA
-         ═══════════════════════════════════════════ -->
-    <section class="register-section" id="register">
-        <div class="section-inner">
-            <div class="register-inner">
-                <div class="section-header centered reveal">
-                    <div class="section-tag">Secure Your Spot</div>
-                    <h2 class="section-title" style="color: var(--white);">Register Your Team</h2>
-                    <p class="section-subtitle" style="color: rgba(255,255,255,0.5);">Spots are limited. Submit your team information below and we'll follow up with next steps and payment details.</p>
+    <!-- ═══════════════════════════════════════
+         HALL OF CHAMPIONS
+         ═══════════════════════════════════════ -->
+    <section class="champions" id="champions">
+        <div class="container">
+            <div class="champions__header fade-in">
+                <div class="section__tag">History</div>
+                <h2 class="section__title">HALL OF CHAMPIONS</h2>
+                <p class="section__subtitle" style="margin: 0 auto;">Honoring the teams that earned the title of World Series Champion.</p>
+            </div>
+            <div class="table-wrap fade-in">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Division</th>
+                            <th>Champion</th>
+                            <th>MVP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2025</td><td>2028 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2029 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2030 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2031 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2032 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2033 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2034 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2028 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2029 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2030 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2031 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2032 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2025</td><td>2033 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2028 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2029 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2030 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2031 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2032 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2033 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2034 Boys</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2028 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2029 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2030 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2031 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2032 Girls</td><td>TBD</td><td>TBD</td></tr>
+                        <tr><td>2024</td><td>2033 Girls</td><td>TBD</td><td>TBD</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         REGISTRATION
+         ═══════════════════════════════════════ -->
+    <section class="register" id="register">
+        <div class="container">
+            <div class="register__inner">
+                <div class="fade-in">
+                    <div class="section__tag">Secure Your Spot</div>
+                    <h2 class="section__title" style="color: var(--white);">REGISTER YOUR TEAM</h2>
+                    <p class="section__subtitle" style="color: rgba(255,255,255,0.5); margin: 0 auto;">Spots are limited. Submit your team information below and we will follow up with next steps and payment details.</p>
                 </div>
-                <form class="register-form reveal" id="registerForm" novalidate>
-                    <div class="form-group">
+                <form class="register__form fade-in" id="registerForm" novalidate>
+                    <div class="form-field">
                         <label for="teamName">Team Name</label>
                         <input type="text" id="teamName" name="teamName" placeholder="e.g. LI Lightning">
-                        <div class="form-error">Team name is required</div>
+                        <div class="form-field__error">Team name is required</div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-field">
                         <label for="coachName">Coach Name</label>
                         <input type="text" id="coachName" name="coachName" placeholder="First Last">
-                        <div class="form-error">Coach name is required</div>
+                        <div class="form-field__error">Coach name is required</div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-field">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="coach@team.com">
-                        <div class="form-error">Valid email is required</div>
+                        <div class="form-field__error">Valid email is required</div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-field">
                         <label for="phone">Phone</label>
                         <input type="tel" id="phone" name="phone" placeholder="(555) 555-0199">
-                        <div class="form-error">Phone number is required</div>
+                        <div class="form-field__error">Phone number is required</div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-field full-width">
                         <label for="division">Division</label>
                         <select id="division" name="division">
                             <option value="">Select Division</option>
-                            <option value="2028">2028</option>
-                            <option value="2029">2029</option>
-                            <option value="2030">2030</option>
-                            <option value="2031">2031</option>
-                            <option value="2032">2032</option>
-                            <option value="2033">2033</option>
-                            <option value="2034">2034</option>
+                            <option value="2028-boys">2028 Boys</option>
+                            <option value="2029-boys">2029 Boys</option>
+                            <option value="2030-boys">2030 Boys</option>
+                            <option value="2031-boys">2031 Boys</option>
+                            <option value="2032-boys">2032 Boys</option>
+                            <option value="2033-boys">2033 Boys</option>
+                            <option value="2034-boys">2034 Boys</option>
+                            <option value="2028-girls">2028 Girls</option>
+                            <option value="2029-girls">2029 Girls</option>
+                            <option value="2030-girls">2030 Girls</option>
+                            <option value="2031-girls">2031 Girls</option>
+                            <option value="2032-girls">2032 Girls</option>
+                            <option value="2033-girls">2033 Girls</option>
                         </select>
-                        <div class="form-error">Please select a division</div>
+                        <div class="form-field__error">Please select a division</div>
                     </div>
-                    <div class="form-group">
-                        <label for="gender">Gender</label>
-                        <select id="gender" name="gender">
-                            <option value="">Select Gender</option>
-                            <option value="boys">Boys</option>
-                            <option value="girls">Girls</option>
-                        </select>
-                        <div class="form-error">Please select a gender</div>
+                    <div class="full-width">
+                        <button type="submit" class="btn btn--red btn--lg" style="width: 100%; justify-content: center;">Submit Registration</button>
                     </div>
-                    <div class="register-submit">
-                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Submit Registration &rarr;</button>
-                    </div>
-                    <div class="register-contact">
+                    <div class="register__contact">
                         Questions? <a href="mailto:info@bethebestli.com">Contact us</a>
                     </div>
                 </form>
@@ -1272,171 +910,138 @@
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
+    <!-- ═══════════════════════════════════════
          FOOTER
-         ═══════════════════════════════════════════ -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="#" class="logo">BTB <span>LACROSSE</span></a>
-                <p>A structured lacrosse development program built on accountability, film study, and intentional coaching. Long Island, NY.</p>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener" title="Instagram">IG</a>
-                    <a href="https://www.youtube.com/@bethebestlacrosse" target="_blank" rel="noopener" title="YouTube">YT</a>
+         ═══════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__brand-name">BTB <span>LACROSSE</span></div>
+                    <p>A structured lacrosse development program built on accountability, film study, and intentional coaching. Long Island, NY.</p>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener" aria-label="BTB on Instagram">IG</a>
+                        <a href="https://www.youtube.com/@bethebestlacrosse" target="_blank" rel="noopener" aria-label="BTB on YouTube">YT</a>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h4>Program</h4>
+                    <a href="index.html">Our Standard</a>
+                    <a href="index.html#development">Development Model</a>
+                    <a href="index.html#filmstudy">Film Study</a>
+                    <a href="coach-bios.html">Coach Bios</a>
+                    <a href="index.html#results">Results</a>
+                </div>
+                <div class="footer__col">
+                    <h4>Events</h4>
+                    <a href="world-series.html">World Series</a>
+                    <a href="players-hub.html">Players Hub</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer__col">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@bethebestli.com">info@bethebestli.com</a>
+                    <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener">@bethebestli</a>
+                    <a>Long Island, NY</a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Program</h4>
-                <a href="index.html">Our Standard</a>
-                <a href="index.html#development">Development Model</a>
-                <a href="index.html#filmstudy">Film Study</a>
-                <a href="coach-bios.html">Coach Bios</a>
-                <a href="index.html#results">Results</a>
+            <div class="footer__bottom">
+                &copy; 2026 Be The Best Lacrosse. All rights reserved.
             </div>
-            <div class="footer-col">
-                <h4>Events</h4>
-                <a href="world-series.html">World Series</a>
-                <a href="players-hub.html">Players Hub</a>
-                <a href="faq.html">FAQ</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <a href="mailto:info@bethebestli.com">info@bethebestli.com</a>
-                <a href="#">(516) 555-0199</a>
-                <a href="#">Long Island, NY</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 Be The Best Lacrosse. All rights reserved.
         </div>
     </footer>
 
     <script>
-        // ── Mobile Menu Toggle ──
-        function toggleMenu() {
-            var nav = document.getElementById('navLinks');
-            var hamburger = document.getElementById('hamburger');
-            nav.classList.toggle('open');
-            hamburger.classList.toggle('active');
-        }
+        /* ── Hamburger Toggle ── */
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
 
-        document.querySelectorAll('.btb-nav a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.getElementById('navLinks').classList.remove('open');
-                document.getElementById('hamburger').classList.remove('active');
+        hamburger.addEventListener('click', function () {
+            navLinks.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            const expanded = navLinks.classList.contains('open');
+            hamburger.setAttribute('aria-expanded', expanded);
+        });
+
+        navLinks.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
             });
         });
 
-        // ── Particle Animation ──
-        (function() {
-            var container = document.getElementById('particles');
-            for (var i = 0; i < 30; i++) {
-                var p = document.createElement('div');
-                p.className = 'particle';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.top = Math.random() * 100 + '%';
-                p.style.animationDelay = Math.random() * 8 + 's';
-                p.style.animationDuration = (6 + Math.random() * 6) + 's';
-                container.appendChild(p);
-            }
-        })();
-
-        // ── Countdown Timer ──
-        (function() {
-            // Placeholder date — update when tournament date is confirmed
-            var target = new Date('2026-07-17T08:00:00').getTime();
-
-            function update() {
-                var now = Date.now();
-                var diff = target - now;
-
-                if (diff <= 0) {
-                    document.getElementById('cd-days').textContent = '0';
-                    document.getElementById('cd-hours').textContent = '0';
-                    document.getElementById('cd-mins').textContent = '0';
-                    document.getElementById('cd-secs').textContent = '0';
-                    return;
+        /* ── Scroll Shadow on Header ── */
+        (function () {
+            var header = document.getElementById('navbar');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
                 }
-
-                var d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                var s = Math.floor((diff % (1000 * 60)) / 1000);
-
-                document.getElementById('cd-days').textContent = d;
-                document.getElementById('cd-hours').textContent = h;
-                document.getElementById('cd-mins').textContent = m;
-                document.getElementById('cd-secs').textContent = s;
-            }
-
-            update();
-            setInterval(update, 1000);
+            });
         })();
 
-        // ── Scroll Reveal ──
-        (function() {
-            var reveals = document.querySelectorAll('.reveal');
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
+        /* ── Scroll Reveal ── */
+        (function () {
+            var targets = document.querySelectorAll('.fade-in, .stagger');
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                     }
                 });
-            }, { threshold: 0.15 });
+            }, { threshold: 0.12 });
 
-            reveals.forEach(function(el) {
+            targets.forEach(function (el) {
                 observer.observe(el);
             });
         })();
 
-        // ── Form Validation ──
-        (function() {
+        /* ── Form Handling ── */
+        (function () {
             var form = document.getElementById('registerForm');
             if (!form) return;
 
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
                 var valid = true;
 
                 // Clear previous errors
-                form.querySelectorAll('.form-group').forEach(function(g) {
-                    g.classList.remove('error');
+                form.querySelectorAll('.form-field').forEach(function (f) {
+                    f.classList.remove('has-error');
                 });
 
                 // Team Name
                 if (!document.getElementById('teamName').value.trim()) {
-                    document.getElementById('teamName').closest('.form-group').classList.add('error');
+                    document.getElementById('teamName').closest('.form-field').classList.add('has-error');
                     valid = false;
                 }
 
                 // Coach Name
                 if (!document.getElementById('coachName').value.trim()) {
-                    document.getElementById('coachName').closest('.form-group').classList.add('error');
+                    document.getElementById('coachName').closest('.form-field').classList.add('has-error');
                     valid = false;
                 }
 
                 // Email
                 var email = document.getElementById('email').value.trim();
                 if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    document.getElementById('email').closest('.form-group').classList.add('error');
+                    document.getElementById('email').closest('.form-field').classList.add('has-error');
                     valid = false;
                 }
 
                 // Phone
                 if (!document.getElementById('phone').value.trim()) {
-                    document.getElementById('phone').closest('.form-group').classList.add('error');
+                    document.getElementById('phone').closest('.form-field').classList.add('has-error');
                     valid = false;
                 }
 
                 // Division
                 if (!document.getElementById('division').value) {
-                    document.getElementById('division').closest('.form-group').classList.add('error');
-                    valid = false;
-                }
-
-                // Gender
-                if (!document.getElementById('gender').value) {
-                    document.getElementById('gender').closest('.form-group').classList.add('error');
+                    document.getElementById('division').closest('.form-field').classList.add('has-error');
                     valid = false;
                 }
 
@@ -1447,9 +1052,9 @@
             });
         })();
 
-        // ── Smooth Scroll for anchor links ──
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
+        /* ── Smooth Scroll for anchor links ── */
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
                 var target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     e.preventDefault();

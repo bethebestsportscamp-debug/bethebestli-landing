@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <title>BTB Gallery | Be The Best Lacrosse</title>
-    <meta name="description" content="BTB Lacrosse Gallery — game action, training sessions, and championship moments from Long Island's premier lacrosse development program.">
-    <meta property="og:title" content="BTB Gallery | Be The Best Lacrosse">
+    <title>Gallery | BTB Lacrosse</title>
+    <meta name="description" content="BTB Lacrosse Gallery — game action, training sessions, and championship moments from Long Island's premier lacrosse program.">
+    <meta property="og:title" content="Gallery | BTB Lacrosse">
     <meta property="og:description" content="BTB Lacrosse Gallery — game action, training sessions, and championship moments.">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#D22630">
@@ -18,217 +18,175 @@
         /* ── Hero ── */
         .hero {
             position: relative;
-            min-height: 55vh;
+            min-height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
             overflow: hidden;
-            padding: 8rem 2rem 4rem;
+            padding: 140px 24px 80px;
         }
 
-        .hero-bg {
+        .hero__bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 40%, #0d0d0d 100%);
+            background: linear-gradient(160deg, #0a0a0a 0%, #111 40%, #0a0a0a 100%);
             z-index: 0;
         }
 
-        .hero-bg::after {
+        .hero__bg::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 50% 100%, rgba(210,38,48,0.15) 0%, transparent 60%);
+            background: radial-gradient(ellipse at 50% 80%, rgba(210, 38, 48, 0.12) 0%, transparent 60%);
         }
 
-        #particles {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(210, 38, 48, 0.3);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-            50% { transform: translateY(-40px) scale(1.5); opacity: 0.7; }
-        }
-
-        .hero-inner {
+        .hero__inner {
             position: relative;
-            z-index: 2;
-            max-width: 800px;
+            z-index: 1;
+            max-width: 700px;
         }
 
-        .hero-badge {
+        .hero__badge {
             display: inline-block;
             border: 1px solid rgba(210, 38, 48, 0.4);
-            color: rgba(255,255,255,0.7);
-            padding: 0.35rem 1.2rem;
-            font-size: 0.7rem;
+            background: rgba(210, 38, 48, 0.08);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 6px 20px;
+            font-size: 0.68rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 4px;
             border-radius: 2px;
-            margin-bottom: 1.2rem;
-            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 16px;
+            font-family: var(--font-body);
         }
 
-        .hero h1 {
-            font-size: 4rem;
+        .hero__title {
+            font-size: clamp(2.8rem, 6vw, 4.2rem);
             line-height: 1;
-            margin-bottom: 1rem;
+            margin-bottom: 16px;
             letter-spacing: 3px;
-        }
-
-        .hero h1 .highlight {
-            color: var(--primary);
-        }
-
-        .hero-sub {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.5);
-            max-width: 550px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* ── Filter Bar ── */
-        .filter-bar {
-            position: sticky;
-            top: 70px;
-            z-index: 100;
-            background: var(--white);
-            border-bottom: 1px solid #eee;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-pill {
-            padding: 0.5rem 1.4rem;
-            font-size: 0.78rem;
-            font-weight: 600;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            background: transparent;
-            color: var(--gray);
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .filter-pill:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .filter-pill.active {
-            background: var(--primary);
-            border-color: var(--primary);
             color: var(--white);
         }
 
-        /* ── Gallery Grid ── */
-        .gallery-section {
-            padding: 3rem 2rem 5rem;
-            max-width: 1200px;
+        .hero__subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            max-width: 560px;
             margin: 0 auto;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* ── Gallery Section ── */
+        .gallery {
+            padding: 48px 0 100px;
+            background: var(--white);
+        }
+
+        .gallery .filters {
+            justify-content: center;
+            margin-bottom: 40px;
         }
 
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            gap: 24px;
         }
 
         /* ── Gallery Card ── */
         .gallery-card {
             position: relative;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
         }
 
         .gallery-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
         }
 
         .gallery-card.hidden {
             display: none;
         }
 
-        .card-placeholder {
+        .gallery-card__placeholder {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
         }
 
-        /* 4:3 aspect for photos */
-        .gallery-card[data-category="camps"] .card-placeholder,
-        .gallery-card[data-category="tournaments"] .card-placeholder {
+        /* 4:3 for photo cards */
+        .gallery-card--photo .gallery-card__placeholder {
             aspect-ratio: 4 / 3;
         }
 
-        /* 16:9 aspect for video */
-        .gallery-card[data-category="highlights"] .card-placeholder {
+        /* 16:9 for video cards */
+        .gallery-card--video .gallery-card__placeholder {
             aspect-ratio: 16 / 9;
         }
 
-        /* Camps gradient */
-        .gallery-card[data-category="camps"] .card-placeholder {
+        /* Category-specific gradients */
+        .gallery-card[data-category="camps"] .gallery-card__placeholder {
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
-            color: rgba(210,38,48,0.3);
         }
 
-        /* Tournament gradient */
-        .gallery-card[data-category="tournaments"] .card-placeholder {
-            background: linear-gradient(135deg, #0d0d0d 0%, #1f1f1f 50%, #0d0d0d 100%);
-            color: rgba(210,38,48,0.3);
+        .gallery-card[data-category="tournaments"] .gallery-card__placeholder {
+            background: linear-gradient(135deg, #0d1520 0%, #1a2535 50%, #0d1520 100%);
         }
 
-        /* Highlights gradient */
-        .gallery-card[data-category="highlights"] .card-placeholder {
-            background: linear-gradient(135deg, #111 0%, #222 50%, #111 100%);
-            color: rgba(255,255,255,0.25);
+        .gallery-card[data-category="highlights"] .gallery-card__placeholder {
+            background: linear-gradient(135deg, #111 0%, #1e1e1e 50%, #111 100%);
         }
 
-        .card-caption {
+        /* Caption overlay */
+        .gallery-card__caption {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 1.2rem 1rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 40px 16px 16px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
             color: var(--white);
         }
 
-        .card-caption h4 {
-            font-size: 1.1rem;
-            letter-spacing: 1px;
+        .gallery-card__badge {
+            display: inline-block;
+            padding: 3px 10px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 3px;
+            margin-bottom: 6px;
         }
 
-        .card-caption p {
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.5);
-            margin-top: 0.2rem;
+        .gallery-card[data-category="camps"] .gallery-card__badge {
+            background: rgba(210, 38, 48, 0.25);
+            color: var(--red-light);
+        }
+
+        .gallery-card[data-category="tournaments"] .gallery-card__badge {
+            background: rgba(27, 42, 74, 0.4);
+            color: #7ea8d4;
+        }
+
+        .gallery-card[data-category="highlights"] .gallery-card__badge {
+            background: rgba(197, 164, 78, 0.25);
+            color: var(--gold);
+        }
+
+        .gallery-card__title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            line-height: 1.2;
         }
 
         /* ── Play Button Overlay ── */
@@ -244,17 +202,18 @@
         .play-btn {
             width: 60px;
             height: 60px;
-            background: rgba(210,38,48,0.9);
+            background: rgba(210, 38, 48, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease, background 0.3s ease;
+            transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .gallery-card:hover .play-btn {
-            transform: scale(1.1);
-            background: var(--primary);
+            transform: scale(1.12);
+            background: var(--red);
         }
 
         .play-btn::after {
@@ -265,14 +224,14 @@
             border-style: solid;
             border-width: 10px 0 10px 18px;
             border-color: transparent transparent transparent var(--white);
-            margin-left: 3px;
+            margin-left: 4px;
         }
 
         /* ── Scroll Reveal ── */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.7s ease;
+            transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
         }
 
         .reveal.visible {
@@ -282,282 +241,300 @@
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
-            .hero { padding: 6rem 1.5rem 3rem; min-height: 40vh; }
-            .hero h1 { font-size: 2.6rem; }
-            .hero-sub { font-size: 0.9rem; }
-
-            .filter-bar {
-                top: 60px;
-                padding: 0.8rem 1rem;
-                gap: 0.4rem;
+            .hero {
+                padding: 120px 16px 60px;
+                min-height: 38vh;
             }
 
-            .filter-pill {
-                padding: 0.4rem 1rem;
-                font-size: 0.7rem;
+            .gallery {
+                padding: 32px 0 72px;
             }
-
-            .gallery-section { padding: 2rem 1rem 4rem; }
 
             .gallery-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 16px;
             }
+        }
 
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+        @media (max-width: 480px) {
+            .hero__title {
+                font-size: 2.4rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:var(--red);color:var(--white);font-size:0.85rem;font-weight:600;text-decoration:none;border-radius:0 0 var(--radius-sm) 0;">Skip to content</a>
 
-    <!-- Header -->
-    <header class="btb-header" id="navbar" role="banner">
-        <a href="index.html" class="btb-logo">
-            <img src="assets/B 3d Metal Logo copy.png" alt="BTB Lacrosse — Home">
-        </a>
-        <nav class="btb-nav" id="navLinks" role="navigation" aria-label="Main navigation">
-            <a href="index.html">Home</a>
-            <a href="players-hub.html">Players Hub</a>
-            <a href="world-series.html">World Series</a>
-            <a href="gallery.html" aria-current="page" style="color: var(--primary);">Gallery</a>
-            <a href="coach-bios.html">Coaches</a>
-            <a href="faq.html">FAQ</a>
-            <a href="mailto:info@bethebestli.com?subject=BTB%20Registration" class="btb-cta">Register Now</a>
-        </nav>
-        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
+    <!-- ═══════════════════════════════════════
+         HEADER
+         ═══════════════════════════════════════ -->
+    <header class="header" id="navbar">
+        <div class="header__inner">
+            <a href="index.html" class="header__logo">
+                <img src="assets/B 3d Metal Logo copy.png" alt="BTB Lacrosse — Home">
+            </a>
+            <nav class="nav" id="navLinks" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="players-hub.html">Players Hub</a>
+                <a href="world-series.html">World Series</a>
+                <a href="gallery.html" class="active" aria-current="page">Gallery</a>
+                <a href="coach-bios.html">Coaches</a>
+                <a href="faq.html">FAQ</a>
+                <a href="mailto:info@bethebestli.com?subject=BTB%20Registration" class="nav__cta">Register Now</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
-    <!-- Hero -->
+    <!-- ═══════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════ -->
     <section class="hero" id="main-content">
-        <div class="hero-bg"></div>
-        <div id="particles"></div>
-        <div class="hero-inner">
-            <div class="hero-badge">BTB Media</div>
-            <h1>THE BTB <span class="highlight">GALLERY</span></h1>
-            <p class="hero-sub">Game action, training sessions, and championship moments — captured from across the BTB Lacrosse program.</p>
+        <div class="hero__bg"></div>
+        <div class="hero__inner fade-in">
+            <div class="hero__badge">Gallery</div>
+            <h1 class="hero__title">THE BTB GALLERY</h1>
+            <p class="hero__subtitle">Game action, training sessions, and championship moments from Long Island's premier lacrosse program.</p>
         </div>
     </section>
 
-    <!-- Filter Bar -->
-    <div class="filter-bar" id="filterBar">
-        <button class="filter-pill active" data-filter="all">All</button>
-        <button class="filter-pill" data-filter="camps">Camps &amp; Clinics</button>
-        <button class="filter-pill" data-filter="tournaments">Tournaments</button>
-        <button class="filter-pill" data-filter="highlights">Player Highlights</button>
-    </div>
+    <!-- ═══════════════════════════════════════
+         GALLERY SECTION
+         ═══════════════════════════════════════ -->
+    <section class="gallery">
+        <div class="container">
 
-    <!-- Gallery Grid -->
-    <section class="gallery-section">
-        <div class="gallery-grid" id="galleryGrid">
-
-            <!-- ═══ Camps & Clinics ═══ -->
-            <div class="gallery-card reveal" data-category="camps">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Summer Camp 2025</h4>
-                    <p>Camps &amp; Clinics</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="camps">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Skills Clinic</h4>
-                    <p>Camps &amp; Clinics</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="camps">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Goalie Training Camp</h4>
-                    <p>Camps &amp; Clinics</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="camps">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Spring Training Week</h4>
-                    <p>Camps &amp; Clinics</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="camps">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Elite Shooting Clinic</h4>
-                    <p>Camps &amp; Clinics</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="camps">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Fall Development Series</h4>
-                    <p>Camps &amp; Clinics</p>
-                </div>
+            <!-- Filter Bar -->
+            <div class="filters" id="filterBar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="camps">Camps &amp; Clinics</button>
+                <button class="filter-btn" data-filter="tournaments">Tournaments</button>
+                <button class="filter-btn" data-filter="highlights">Player Highlights</button>
             </div>
 
-            <!-- ═══ Tournaments ═══ -->
-            <div class="gallery-card reveal" data-category="tournaments">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Championship Game 2025</h4>
-                    <p>Tournaments</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="tournaments">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Opening Ceremonies</h4>
-                    <p>Tournaments</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="tournaments">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>World Series Semi-Finals</h4>
-                    <p>Tournaments</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="tournaments">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Trophy Presentation</h4>
-                    <p>Tournaments</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="tournaments">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Pool Play Action</h4>
-                    <p>Tournaments</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="tournaments">
-                <div class="card-placeholder">&#128247;</div>
-                <div class="card-caption">
-                    <h4>Team Warm-Ups</h4>
-                    <p>Tournaments</p>
-                </div>
-            </div>
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="galleryGrid">
 
-            <!-- ═══ Player Highlights ═══ -->
-            <div class="gallery-card reveal" data-category="highlights">
-                <div class="card-placeholder">&#127909;</div>
-                <div class="play-overlay"><div class="play-btn"></div></div>
-                <div class="card-caption">
-                    <h4>2025 Season Highlights</h4>
-                    <p>Player Highlights</p>
+                <!-- ═══ Camps & Clinics (6 cards) ═══ -->
+                <div class="gallery-card gallery-card--photo reveal" data-category="camps">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Camps &amp; Clinics</span>
+                        <h4 class="gallery-card__title">Summer Camp 2025</h4>
+                    </div>
                 </div>
-            </div>
-            <div class="gallery-card reveal" data-category="highlights">
-                <div class="card-placeholder">&#127909;</div>
-                <div class="play-overlay"><div class="play-btn"></div></div>
-                <div class="card-caption">
-                    <h4>Top 10 Goals</h4>
-                    <p>Player Highlights</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="highlights">
-                <div class="card-placeholder">&#127909;</div>
-                <div class="play-overlay"><div class="play-btn"></div></div>
-                <div class="card-caption">
-                    <h4>Best Saves of the Year</h4>
-                    <p>Player Highlights</p>
-                </div>
-            </div>
-            <div class="gallery-card reveal" data-category="highlights">
-                <div class="card-placeholder">&#127909;</div>
-                <div class="play-overlay"><div class="play-btn"></div></div>
-                <div class="card-caption">
-                    <h4>Championship Recap</h4>
-                    <p>Player Highlights</p>
-                </div>
-            </div>
 
+                <div class="gallery-card gallery-card--photo reveal" data-category="camps">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Camps &amp; Clinics</span>
+                        <h4 class="gallery-card__title">Skills Clinic</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--photo reveal" data-category="camps">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Camps &amp; Clinics</span>
+                        <h4 class="gallery-card__title">Goalie Training Camp</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--photo reveal" data-category="camps">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Camps &amp; Clinics</span>
+                        <h4 class="gallery-card__title">Spring Training Week</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--photo reveal" data-category="camps">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Camps &amp; Clinics</span>
+                        <h4 class="gallery-card__title">Elite Shooting Clinic</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--photo reveal" data-category="camps">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Camps &amp; Clinics</span>
+                        <h4 class="gallery-card__title">Fall Development Series</h4>
+                    </div>
+                </div>
+
+                <!-- ═══ Tournaments (6 cards) ═══ -->
+                <div class="gallery-card gallery-card--photo reveal" data-category="tournaments">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Tournaments</span>
+                        <h4 class="gallery-card__title">Championship Game 2025</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--photo reveal" data-category="tournaments">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Tournaments</span>
+                        <h4 class="gallery-card__title">Opening Ceremonies</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--photo reveal" data-category="tournaments">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Tournaments</span>
+                        <h4 class="gallery-card__title">World Series Semi-Finals</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--photo reveal" data-category="tournaments">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Tournaments</span>
+                        <h4 class="gallery-card__title">Trophy Presentation</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--photo reveal" data-category="tournaments">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Tournaments</span>
+                        <h4 class="gallery-card__title">Pool Play Action</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--photo reveal" data-category="tournaments">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Tournaments</span>
+                        <h4 class="gallery-card__title">Team Warm-Ups</h4>
+                    </div>
+                </div>
+
+                <!-- ═══ Player Highlights (4 video cards) ═══ -->
+                <div class="gallery-card gallery-card--video reveal" data-category="highlights">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="play-overlay"><div class="play-btn"></div></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Player Highlights</span>
+                        <h4 class="gallery-card__title">2025 Season Highlights</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--video reveal" data-category="highlights">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="play-overlay"><div class="play-btn"></div></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Player Highlights</span>
+                        <h4 class="gallery-card__title">Top 10 Goals</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--video reveal" data-category="highlights">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="play-overlay"><div class="play-btn"></div></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Player Highlights</span>
+                        <h4 class="gallery-card__title">Best Saves of the Year</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-card gallery-card--video reveal" data-category="highlights">
+                    <div class="gallery-card__placeholder"></div>
+                    <div class="play-overlay"><div class="play-btn"></div></div>
+                    <div class="gallery-card__caption">
+                        <span class="gallery-card__badge">Player Highlights</span>
+                        <h4 class="gallery-card__title">Championship Recap</h4>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">BTB <span>LACROSSE</span></a>
-                <p>A structured lacrosse development program built on accountability, film study, and intentional coaching. Long Island, NY.</p>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener" title="Instagram" aria-label="BTB on Instagram">IG</a>
-                    <a href="https://www.youtube.com/@bethebestlacrosse" target="_blank" rel="noopener" title="YouTube" aria-label="BTB on YouTube">YT</a>
+    <!-- ═══════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__brand-name">BTB <span>LACROSSE</span></div>
+                    <p>A structured lacrosse development program built on accountability, film study, and intentional coaching. Long Island, NY.</p>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener" aria-label="BTB on Instagram">IG</a>
+                        <a href="https://www.youtube.com/@bethebestlacrosse" target="_blank" rel="noopener" aria-label="BTB on YouTube">YT</a>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h4>Program</h4>
+                    <a href="index.html">Our Standard</a>
+                    <a href="index.html#development">Development Model</a>
+                    <a href="index.html#filmstudy">Film Study</a>
+                    <a href="coach-bios.html">Coach Bios</a>
+                    <a href="index.html#results">Results</a>
+                </div>
+                <div class="footer__col">
+                    <h4>Resources</h4>
+                    <a href="coach-bios.html">Coaches</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer__col">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@bethebestli.com">info@bethebestli.com</a>
+                    <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener">@bethebestli</a>
+                    <a>Long Island, NY</a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Program</h4>
-                <a href="index.html">Our Standard</a>
-                <a href="index.html#development">Development Model</a>
-                <a href="index.html#filmstudy">Film Study</a>
-                <a href="coach-bios.html">Coach Bios</a>
-                <a href="index.html#results">Results</a>
+            <div class="footer__bottom">
+                &copy; 2026 Be The Best Lacrosse. All rights reserved.
             </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <a href="coach-bios.html">Coaches</a>
-                <a href="testimonials.html">Testimonials</a>
-                <a href="faq.html">FAQ</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <a href="mailto:info@bethebestli.com">info@bethebestli.com</a>
-                <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener">@bethebestli</a>
-                <a>Long Island, NY</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 Be The Best Lacrosse. All rights reserved.
         </div>
     </footer>
 
     <script>
-        // ── Navbar scroll shadow ──
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('navbar');
-            if (window.scrollY > 40) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+        /* ── Hamburger Toggle ── */
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            const expanded = navLinks.classList.contains('open');
+            hamburger.setAttribute('aria-expanded', expanded);
         });
 
-        // ── Mobile menu toggle ──
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            const btn = document.getElementById('hamburger');
-            nav.classList.toggle('open');
-            btn.classList.toggle('active');
-            const expanded = nav.classList.contains('open');
-            btn.setAttribute('aria-expanded', expanded);
-        }
-
-        document.querySelectorAll('.btb-nav a').forEach(link => {
+        document.querySelectorAll('.nav a').forEach(link => {
             link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('open');
-                document.getElementById('hamburger').classList.remove('active');
-                document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
             });
         });
 
-        // ── Filter functionality ──
-        const pills = document.querySelectorAll('.filter-pill');
+        /* ── Scroll Shadow on Header ── */
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('navbar');
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        /* ── Gallery Filtering ── */
+        const filterBtns = document.querySelectorAll('.filter-btn');
         const cards = document.querySelectorAll('.gallery-card');
 
-        pills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                pills.forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
 
-                const filter = pill.getAttribute('data-filter');
+                const filter = btn.getAttribute('data-filter');
 
                 cards.forEach(card => {
                     if (filter === 'all' || card.getAttribute('data-category') === filter) {
@@ -569,29 +546,19 @@
             });
         });
 
-        // ── Scroll reveal ──
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        /* ── Scroll Reveal Animations ── */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 60);
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.12 });
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // ── Hero particles ──
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 15; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 8 + 's';
-            particle.style.animationDuration = (6 + Math.random() * 4) + 's';
-            particlesContainer.appendChild(particle);
-        }
+        document.querySelectorAll('.reveal, .fade-in').forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>

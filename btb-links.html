@@ -3,65 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTB Coaching System — All Links</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>BTB Links | BTB Lacrosse</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #0a0a0a; color: #fff; font-family: 'Montserrat', sans-serif; min-height: 100vh; padding: 40px 20px; }
-        .container { max-width: 700px; margin: 0 auto; }
-        h1 { font-family: 'Bebas Neue', sans-serif; font-size: 42px; text-align: center; margin-bottom: 8px; letter-spacing: 2px; }
-        .subtitle { text-align: center; color: #888; font-size: 14px; margin-bottom: 40px; }
-        .section { margin-bottom: 32px; }
-        .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #D22630; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.1); letter-spacing: 1px; }
-        .link-list { list-style: none; }
-        .link-list li { margin-bottom: 6px; }
-        .link-list a { color: #fff; text-decoration: none; font-size: 15px; padding: 10px 16px; display: block; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); transition: all 0.2s; }
-        .link-list a:hover { background: rgba(210,38,48,0.15); border-color: #D22630; transform: translateX(4px); }
-        .badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
-        .badge-coach { background: #D22630; color: #fff; }
-        .badge-player { background: #D4A843; color: #000; }
+        body {
+            background: var(--gray-900);
+            color: var(--white);
+            min-height: 100vh;
+            padding: 48px 20px 64px;
+        }
+
+        .links-page {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ── Logo ── */
+        .links-logo {
+            display: block;
+            width: 72px;
+            height: auto;
+            margin: 0 auto 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s var(--ease-out) 0.1s forwards;
+        }
+
+        /* ── Page Header ── */
+        .links-header {
+            text-align: center;
+            margin-bottom: 48px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s var(--ease-out) 0.2s forwards;
+        }
+
+        .links-header__title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .links-header__subtitle {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            letter-spacing: 0.3px;
+        }
+
+        /* ── Sections ── */
+        .links-section {
+            margin-bottom: 36px;
+        }
+
+        .links-section__title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--red);
+            letter-spacing: 2px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 12px;
+        }
+
+        /* ── Link List ── */
+        .links-list {
+            list-style: none;
+        }
+
+        .links-list li {
+            margin-bottom: 6px;
+        }
+
+        .links-list a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-sm);
+            transition: all 0.25s var(--ease);
+        }
+
+        .links-list a:hover {
+            background: rgba(210, 38, 48, 0.12);
+            border-color: var(--red);
+            color: var(--red-light);
+            transform: translateX(6px);
+        }
+
+        .links-list a .arrow {
+            margin-left: auto;
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            transition: color 0.25s var(--ease), transform 0.25s var(--ease);
+        }
+
+        .links-list a:hover .arrow {
+            color: var(--red);
+            transform: translateX(3px);
+        }
+
+        /* ── Badges ── */
+        .links-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .links-badge--staff {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .links-badge--members {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* ── Scroll Reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 480px) {
+            body {
+                padding: 32px 16px 48px;
+            }
+
+            .links-list a {
+                font-size: 0.82rem;
+                padding: 10px 14px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>BTB COACHING SYSTEM</h1>
-        <p class="subtitle">All new pages &mdash; click to open</p>
 
-        <div class="section">
-            <div class="section-title">Boys Video Playbooks</div>
-            <ul class="link-list">
-                <li><a href="btb-boys-offense-playbook.html">Motion Offense Playbook</a></li>
-                <li><a href="btb-boys-defense-playbook.html">Defensive Playbook</a></li>
-                <li><a href="btb-boys-transition-playbook.html">Transition & Special Teams</a></li>
-                <li><a href="btb-boys-coaching-manual.html">Full Coaching Manual</a></li>
+    <div class="links-page">
+
+        <img src="assets/btb-logo-flat.svg" alt="BTB Lacrosse" class="links-logo">
+
+        <div class="links-header">
+            <h1 class="links-header__title">BTB COACHING SYSTEM</h1>
+            <p class="links-header__subtitle">Quick access to all coaching resources</p>
+        </div>
+
+        <!-- Boys Video Playbooks -->
+        <div class="links-section reveal">
+            <div class="links-section__title">Boys Video Playbooks</div>
+            <ul class="links-list">
+                <li><a href="btb-boys-offense-playbook.html">Motion Offense Playbook <span class="arrow">&#10132;</span></a></li>
+                <li><a href="btb-boys-defense-playbook.html">Defensive Playbook <span class="arrow">&#10132;</span></a></li>
+                <li><a href="btb-boys-transition-playbook.html">Transition &amp; Special Teams <span class="arrow">&#10132;</span></a></li>
+                <li><a href="btb-boys-coaching-manual.html">Full Coaching Manual <span class="arrow">&#10132;</span></a></li>
             </ul>
         </div>
 
-        <div class="section">
-            <div class="section-title">Girls Video Playbooks</div>
-            <ul class="link-list">
-                <li><a href="btb-girls-offense-playbook.html">Motion Offense Playbook</a></li>
-                <li><a href="btb-girls-defense-playbook.html">Defensive Playbook</a></li>
-                <li><a href="btb-girls-transition-playbook.html">Transition & Special Teams</a></li>
-                <li><a href="btb-girls-coaching-manual.html">Full Coaching Manual</a></li>
+        <!-- Girls Video Playbooks -->
+        <div class="links-section reveal">
+            <div class="links-section__title">Girls Video Playbooks</div>
+            <ul class="links-list">
+                <li><a href="btb-girls-offense-playbook.html">Motion Offense Playbook <span class="arrow">&#10132;</span></a></li>
+                <li><a href="btb-girls-defense-playbook.html">Defensive Playbook <span class="arrow">&#10132;</span></a></li>
+                <li><a href="btb-girls-transition-playbook.html">Transition &amp; Special Teams <span class="arrow">&#10132;</span></a></li>
+                <li><a href="btb-girls-coaching-manual.html">Full Coaching Manual <span class="arrow">&#10132;</span></a></li>
             </ul>
         </div>
 
-        <div class="section">
-            <div class="section-title">AI Tools</div>
-            <ul class="link-list">
-                <li><a href="btb-coach-ai.html">Coach AI <span class="badge badge-coach">#BTBCOACH26</span></a></li>
-                <li><a href="btb-positionless-guru.html">Positionless Guru <span class="badge badge-player">#BTBLAX26</span></a></li>
+        <!-- AI Tools -->
+        <div class="links-section reveal">
+            <div class="links-section__title">AI Tools</div>
+            <ul class="links-list">
+                <li><a href="btb-coach-ai.html">Coach AI <span class="arrow">&#10132;</span></a></li>
+                <li><a href="btb-positionless-guru.html">Positionless Guru <span class="arrow">&#10132;</span></a></li>
             </ul>
         </div>
 
-        <div class="section">
-            <div class="section-title">Hubs</div>
-            <ul class="link-list">
-                <li><a href="coaches-hub.html">Coaches Hub</a></li>
-                <li><a href="players-hub.html">Players Hub</a></li>
+        <!-- Hubs -->
+        <div class="links-section reveal">
+            <div class="links-section__title">Hubs</div>
+            <ul class="links-list">
+                <li><a href="coaches-hub.html">Coaches Hub <span class="links-badge links-badge--staff">Staff Only</span> <span class="arrow">&#10132;</span></a></li>
+                <li><a href="players-hub.html">Players Hub <span class="links-badge links-badge--members">Members Only</span> <span class="arrow">&#10132;</span></a></li>
             </ul>
         </div>
+
     </div>
+
+    <script>
+        /* Scroll Reveal */
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        reveals.forEach(el => observer.observe(el));
+    </script>
+
 </body>
 </html>

@@ -6,36 +6,30 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <title>BTB Lacrosse Academy | Players Hub</title>
     <meta name="description" content="BTB Lacrosse Academy — A grade-based lacrosse curriculum with 3 levels, progress tracking, and a Wall of Fame. Master the fundamentals. Build your game. Earn your name.">
-    <meta property="og:title" content="BTB Lacrosse Academy | Players Hub">
-    <meta property="og:description" content="BTB Lacrosse Academy — A grade-based lacrosse curriculum with 3 levels, progress tracking, and a Wall of Fame.">
-    <meta property="og:type" content="website">
     <meta name="theme-color" content="#D22630">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="shared.css">
     <style>
-        /* ========================================
-           PAGE VARIABLES
-           ======================================== */
+        /* ── Page Variables ── */
         :root {
-            --green: #2ECC71;
-            --green-dark: #25a85c;
-            --gold: #C5A44E;
-            --gold-dark: #A8893A;
+            --bronze: #CD7F32;
+            --bronze-dark: #A0622A;
+            --silver: #AAA9AD;
+            --silver-dark: #808080;
+            --gold-accent: #FFD700;
         }
 
-        /* ========================================
-           HERO
-           ======================================== */
+        /* ── Hero ── */
         .hero {
             position: relative;
-            min-height: 70vh;
+            min-height: 75vh;
             background: linear-gradient(160deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 140px 20px 60px;
+            padding: 140px 24px 80px;
             overflow: hidden;
         }
 
@@ -51,7 +45,7 @@
         .particle {
             position: absolute;
             width: 4px; height: 4px;
-            background: var(--primary);
+            background: var(--red);
             border-radius: 50%;
             opacity: 0;
             animation: particleFloat 8s infinite ease-in-out;
@@ -64,1454 +58,811 @@
             100% { opacity: 0; transform: translateY(-100px) scale(1); }
         }
 
-        .hero-content {
+        .hero__content {
             position: relative;
             z-index: 1;
             max-width: 900px;
         }
 
-        .hero-badge {
+        .hero__badge {
             display: inline-block;
             background: rgba(210, 38, 48, 0.12);
-            border: 1px solid var(--primary);
-            color: var(--primary);
+            border: 1px solid var(--red);
+            color: var(--red);
             padding: 8px 24px;
             border-radius: 30px;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 24px;
         }
 
-        .hero h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 72px;
+        .hero__title {
+            font-size: clamp(3rem, 8vw, 5rem);
             color: var(--white);
             line-height: 1;
             margin-bottom: 20px;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
         }
 
-        .hero h1 .highlight {
-            color: var(--primary);
-        }
-
-        .hero-subtitle {
-            font-size: 18px;
-            color: rgba(255,255,255,0.65);
-            max-width: 600px;
+        .hero__subtitle {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 640px;
             margin: 0 auto;
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
-        /* ========================================
-           PLAYER LOGIN BAR
-           ======================================== */
-        .login-bar {
-            background: #111;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 20px;
-        }
-
-        .login-bar-inner {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .login-bar input {
-            flex: 1;
-            padding: 12px 18px;
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 6px;
-            background: rgba(255,255,255,0.05);
-            color: var(--white);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .login-bar input:focus {
-            border-color: var(--primary);
-        }
-
-        .login-bar input::placeholder {
-            color: rgba(255,255,255,0.35);
-        }
-
-        .login-bar button {
-            padding: 12px 28px;
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            border-radius: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .login-bar button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
-
-        .welcome-msg {
-            color: rgba(255,255,255,0.8);
-            font-size: 15px;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        .welcome-msg span {
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        .welcome-msg .change-link {
-            color: rgba(255,255,255,0.4);
-            font-size: 12px;
-            margin-left: 12px;
-            cursor: pointer;
-            text-decoration: underline;
-            transition: color 0.3s;
-        }
-
-        .welcome-msg .change-link:hover {
-            color: var(--primary);
-        }
-
-        /* ========================================
-           LEVEL SELECTOR
-           ======================================== */
+        /* ── Level Cards ── */
         .levels-section {
-            background: #0a0a0a;
-            padding: 60px 20px 20px;
+            background: var(--gray-900);
+            padding: 100px 0;
         }
 
-        .levels-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .levels-section .section__title {
+            color: var(--white);
         }
 
         .level-card {
-            background: #111;
-            border: 2px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 28px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            background: var(--gray-800);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
         }
 
-        .level-card:hover:not(.locked) {
-            transform: translateY(-3px);
+        .level-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
         }
 
-        .level-card.active {
-            border-color: var(--primary);
-            background: rgba(210, 38, 48, 0.06);
-        }
-
-        .level-card.active.level-green { border-color: var(--green); background: rgba(46, 204, 113, 0.06); }
-        .level-card.active.level-gold  { border-color: var(--gold);  background: rgba(197, 164, 78, 0.06); }
-        .level-card.active.level-red   { border-color: var(--primary); background: rgba(210, 38, 48, 0.06); }
-
-        .level-card.locked {
-            opacity: 0.45;
-            cursor: not-allowed;
-        }
-
-        .level-card .lock-icon {
+        .level-card::before {
+            content: '';
             position: absolute;
-            top: 16px;
-            right: 16px;
-            font-size: 20px;
-            opacity: 0.5;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
         }
 
-        .level-card .level-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 14px;
+        .level-card--bronze::before { background: var(--bronze); }
+        .level-card--silver::before { background: var(--silver); }
+        .level-card--gold::before   { background: var(--gold); }
+
+        .level-card__icon {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .level-card--bronze .level-card__icon {
+            background: rgba(205, 127, 50, 0.15);
+        }
+        .level-card--silver .level-card__icon {
+            background: rgba(170, 169, 173, 0.15);
+        }
+        .level-card--gold .level-card__icon {
+            background: rgba(197, 164, 78, 0.15);
+        }
+
+        .level-card__level {
+            font-size: 0.68rem;
+            font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 6px;
         }
 
-        .level-green .level-number { color: var(--green); }
-        .level-gold  .level-number { color: var(--gold); }
-        .level-red   .level-number { color: var(--primary); }
+        .level-card--bronze .level-card__level { color: var(--bronze); }
+        .level-card--silver .level-card__level { color: var(--silver); }
+        .level-card--gold .level-card__level   { color: var(--gold); }
 
-        .level-card .level-name {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 28px;
+        .level-card__title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
             color: var(--white);
             letter-spacing: 2px;
             margin-bottom: 4px;
         }
 
-        .level-card .level-grades {
-            font-size: 13px;
-            color: rgba(255,255,255,0.45);
+        .level-card__grades {
+            font-size: 0.82rem;
+            color: var(--gray-400);
+            font-weight: 500;
             margin-bottom: 16px;
         }
 
-        .level-card .level-chapters {
-            font-size: 12px;
-            color: rgba(255,255,255,0.4);
-            margin-bottom: 10px;
-        }
-
-        .level-progress-track {
-            height: 6px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 6px;
-            overflow: hidden;
-        }
-
-        .level-progress-fill {
-            height: 100%;
-            border-radius: 6px;
-            transition: width 0.5s ease;
-            width: 0%;
-        }
-
-        .level-green .level-progress-fill { background: var(--green); }
-        .level-gold  .level-progress-fill { background: var(--gold); }
-        .level-red   .level-progress-fill { background: var(--primary); }
-
-        /* ========================================
-           CHAPTER GRID
-           ======================================== */
-        .chapters-section {
-            background: #0a0a0a;
-            padding: 20px 20px 60px;
-        }
-
-        .chapters-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .chapters-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 24px;
-        }
-
-        .chapters-header h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 32px;
-            color: var(--white);
-            letter-spacing: 2px;
-        }
-
-        .chapters-progress-text {
-            font-size: 14px;
-            color: rgba(255,255,255,0.5);
-            font-weight: 600;
-        }
-
-        .chapters-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .chapter-card {
-            background: #111;
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .chapter-card:not(.ch-locked) {
-            cursor: pointer;
-        }
-
-        .chapter-card:not(.ch-locked):hover {
-            border-color: rgba(255,255,255,0.18);
-            transform: translateY(-2px);
-        }
-
-        .chapter-card.ch-completed {
-            border-color: rgba(46, 204, 113, 0.3);
-        }
-
-        .chapter-card.ch-locked {
-            opacity: 0.35;
-            cursor: not-allowed;
-        }
-
-        .chapter-card-header {
-            padding: 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-        }
-
-        .chapter-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 28px;
-            line-height: 1;
-            color: rgba(255,255,255,0.15);
-            flex-shrink: 0;
-            min-width: 36px;
-        }
-
-        .chapter-card.ch-completed .chapter-number {
-            color: var(--green);
-        }
-
-        .chapter-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .chapter-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 4px;
-        }
-
-        .chapter-desc {
-            font-size: 13px;
-            color: rgba(255,255,255,0.4);
-            line-height: 1.5;
-        }
-
-        .chapter-status {
-            flex-shrink: 0;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            margin-top: 2px;
-        }
-
-        .chapter-card.ch-completed .chapter-status {
-            background: var(--green);
-            border-color: var(--green);
-            color: var(--white);
-        }
-
-        .chapter-card.ch-locked .chapter-status {
-            border-color: rgba(255,255,255,0.08);
-        }
-
-        /* Chapter expanded panel */
-        .chapter-panel {
-            display: none;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding: 20px;
-            background: rgba(255,255,255,0.02);
-        }
-
-        .chapter-card.ch-expanded .chapter-panel {
-            display: block;
-        }
-
-        .chapter-panel-desc {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
+        .level-card__focus {
+            font-size: 0.85rem;
+            color: var(--gray-300);
             line-height: 1.7;
-            margin-bottom: 16px;
-        }
-
-        .chapter-panel h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 10px;
-        }
-
-        .coaching-points {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px;
-        }
-
-        .coaching-points li {
-            font-size: 13px;
-            color: rgba(255,255,255,0.55);
-            padding: 6px 0 6px 18px;
-            position: relative;
-            line-height: 1.5;
-        }
-
-        .coaching-points li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 12px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-        }
-
-        .level-green-active .coaching-points li::before { background: var(--green); }
-        .level-gold-active  .coaching-points li::before { background: var(--gold); }
-        .level-red-active   .coaching-points li::before { background: var(--primary); }
-
-        .video-placeholder {
-            background: rgba(255,255,255,0.04);
-            border: 1px dashed rgba(255,255,255,0.12);
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-            color: rgba(255,255,255,0.25);
-            font-size: 13px;
             margin-bottom: 20px;
         }
 
-        .btn-mark-complete {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
-            border: none;
-            border-radius: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn-mark-complete.mark {
-            background: var(--green);
+        .level-card__focus strong {
             color: var(--white);
+            font-weight: 600;
         }
 
-        .btn-mark-complete.mark:hover {
-            background: var(--green-dark);
-            transform: translateY(-1px);
+        .level-card__skills {
+            list-style: none;
+            margin-bottom: 24px;
         }
 
-        .btn-mark-complete.unmark {
-            background: rgba(255,255,255,0.08);
-            color: rgba(255,255,255,0.6);
+        .level-card__skills li {
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.82rem;
+            color: var(--gray-400);
+            margin-bottom: 8px;
+            line-height: 1.5;
         }
 
-        .btn-mark-complete.unmark:hover {
-            background: rgba(255,255,255,0.12);
+        .level-card__skills li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 7px;
+            width: 8px; height: 8px;
+            border-radius: 50%;
         }
 
-        /* ========================================
-           WALL OF FAME
-           ======================================== */
-        .wall-of-fame {
-            background: #111;
-            padding: 80px 20px;
+        .level-card--bronze .level-card__skills li::before { background: var(--bronze); }
+        .level-card--silver .level-card__skills li::before { background: var(--silver); }
+        .level-card--gold .level-card__skills li::before   { background: var(--gold); }
+
+        .level-card__graduation {
+            padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.78rem;
+            color: var(--gray-500);
+            line-height: 1.6;
         }
 
-        .wall-of-fame-inner {
-            max-width: 1000px;
-            margin: 0 auto;
+        .level-card__graduation strong {
+            color: var(--gray-300);
         }
 
-        .wof-header {
-            text-align: center;
-            margin-bottom: 50px;
+        /* ── Progress Tracking ── */
+        .progress-section {
+            background: var(--gray-50);
+            padding: 100px 0;
         }
 
-        .wof-header .section-label {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--primary);
-            margin-bottom: 10px;
+        .progress-card {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s var(--ease);
         }
 
-        .wof-header h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 48px;
-            color: var(--white);
-            letter-spacing: 3px;
+        .progress-card:hover {
+            box-shadow: var(--shadow-md);
         }
 
-        .wof-level {
-            margin-bottom: 40px;
-        }
-
-        .wof-level-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .wof-level-title.green { color: var(--green); }
-        .wof-level-title.gold  { color: var(--gold); }
-        .wof-level-title.red   { color: var(--primary); }
-
-        .wof-names {
+        .progress-card__header {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .wof-name {
-            display: inline-flex;
             align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .progress-card__label {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--gray-900);
+        }
+
+        .progress-card__pct {
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .progress-card--bronze .progress-card__pct { color: var(--bronze); }
+        .progress-card--silver .progress-card__pct { color: var(--silver-dark); }
+        .progress-card--gold .progress-card__pct   { color: var(--gold-dark); }
+
+        .progress-bar {
+            height: 10px;
+            background: var(--gray-100);
+            border-radius: 100px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar__fill {
+            height: 100%;
+            border-radius: 100px;
+            transition: width 0.8s var(--ease);
+            width: 0;
+        }
+
+        .progress-card--bronze .progress-bar__fill { background: var(--bronze); }
+        .progress-card--silver .progress-bar__fill { background: var(--silver-dark); }
+        .progress-card--gold .progress-bar__fill   { background: var(--gold-dark); }
+
+        .checklist {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 8px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 8px;
-            padding: 10px 18px;
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            font-weight: 500;
         }
 
-        .wof-name .trophy {
-            font-size: 16px;
+        .checklist li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s var(--ease);
+            user-select: none;
         }
 
-        .wof-name.placeholder {
-            border-style: dashed;
-            color: rgba(255,255,255,0.25);
+        .checklist li:hover {
+            background: var(--gray-50);
+        }
+
+        .checklist li.checked {
+            color: var(--gray-400);
+            text-decoration: line-through;
+        }
+
+        .checklist li .check-box {
+            width: 20px; height: 20px;
+            border-radius: 4px;
+            border: 2px solid var(--gray-300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s var(--ease);
+            font-size: 0.65rem;
+            color: transparent;
+        }
+
+        .checklist li.checked .check-box {
+            background: var(--red);
+            border-color: var(--red);
+            color: var(--white);
+        }
+
+        .progress-info {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .progress-info p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ── Wall of Fame ── */
+        .wof-section {
+            background: var(--gray-900);
+            padding: 100px 0;
+        }
+
+        .wof-section .section__title {
+            color: var(--white);
+        }
+
+        .wof-section .section__subtitle {
+            color: var(--gray-400);
+        }
+
+        .wof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .wof-card {
+            background: var(--gray-800);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius-md);
+            padding: 40px 24px;
+            text-align: center;
+            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+        }
+
+        .wof-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .wof-card__avatar {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border: 2px solid rgba(197, 164, 78, 0.3);
+        }
+
+        .wof-card__name {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--white);
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+
+        .wof-card__status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .wof-coming-soon {
+            font-size: 0.78rem;
+            color: var(--gray-500);
+            text-align: center;
+            margin-top: 24px;
             font-style: italic;
         }
 
-        .wof-submit {
+        /* ── CTA Section ── */
+        .cta-section {
+            background: linear-gradient(160deg, #0a0a0a 0%, var(--gray-900) 100%);
+            padding: 100px 0;
             text-align: center;
-            margin-top: 40px;
         }
 
-        .wof-submit p {
-            color: rgba(255,255,255,0.4);
-            font-size: 14px;
-            margin-bottom: 16px;
+        .cta-section .section__title {
+            color: var(--white);
+            margin-bottom: 12px;
         }
 
-        /* ========================================
-           BACK LINK
-           ======================================== */
-        .back-link {
-            position: absolute;
-            top: 90px;
-            left: 30px;
-            z-index: 2;
-            font-size: 13px;
-            color: rgba(255,255,255,0.4);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
+        .cta-section .section__subtitle {
+            color: var(--gray-400);
+            margin: 0 auto 40px;
         }
 
-        .back-link:hover {
-            color: var(--primary);
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        /* ========================================
-           REVEAL ANIMATIONS
-           ======================================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ========================================
-           RESPONSIVE
-           ======================================== */
+        /* ── Responsive ── */
         @media (max-width: 1024px) {
-            .chapters-grid {
+            .wof-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
             .hero {
-                padding: 120px 16px 40px;
-                min-height: 50vh;
+                padding: 120px 16px 60px;
+                min-height: 60vh;
             }
 
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero-subtitle {
-                font-size: 15px;
-            }
-
-            .login-bar-inner {
-                flex-direction: column;
-            }
-
-            .login-bar input,
-            .login-bar button {
-                width: 100%;
-            }
-
-            .levels-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-
-            .chapters-grid {
+            .wof-grid {
                 grid-template-columns: 1fr;
             }
 
-            .chapters-header {
+            .checklist {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
                 flex-direction: column;
-                gap: 8px;
-                align-items: flex-start;
-            }
-
-            .wof-header h2 {
-                font-size: 36px;
-            }
-
-            .back-link {
-                top: 80px;
-                left: 16px;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:var(--red);color:var(--white);font-size:0.85rem;font-weight:600;text-decoration:none;border-radius:0 0 var(--radius-sm) 0;">Skip to content</a>
 
-    <!-- Header -->
-    <header class="btb-header" id="navbar" role="banner">
-        <a href="index.html" class="btb-logo">
-            <img src="assets/B 3d Metal Logo copy.png" alt="BTB Lacrosse — Home">
-        </a>
-        <nav class="btb-nav" id="navLinks" role="navigation" aria-label="Main navigation">
-            <a href="index.html">Home</a>
-            <a href="players-hub.html">Players Hub</a>
-            <a href="world-series.html">World Series</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="coach-bios.html">Coaches</a>
-            <a href="faq.html">FAQ</a>
-            <a href="mailto:info@bethebestli.com?subject=BTB%20Registration" class="btb-cta">Register Now</a>
-        </nav>
-        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
+    <!-- ═══════════════════════════════════════
+         HEADER
+         ═══════════════════════════════════════ -->
+    <header class="header" id="navbar">
+        <div class="header__inner">
+            <a href="index.html" class="header__logo">
+                <img src="assets/B 3d Metal Logo copy.png" alt="BTB Lacrosse — Home">
+            </a>
+            <nav class="nav" id="navLinks" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="players-hub.html">Players Hub</a>
+                <a href="world-series.html">World Series</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="coach-bios.html">Coaches</a>
+                <a href="faq.html">FAQ</a>
+                <a href="mailto:info@bethebestli.com?subject=BTB%20Registration" class="nav__cta">Register Now</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
-    <!-- Hero -->
+    <!-- ═══════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════ -->
     <section class="hero" id="main-content">
-        <a href="players-hub.html" class="back-link">&larr; Players Hub</a>
-
-        <div class="hero-particles" id="heroParticles"></div>
-
-        <div class="hero-content">
-            <div class="hero-badge">BTB Lacrosse Academy</div>
-            <h1>THE BTB LACROSSE <span class="highlight">ACADEMY</span></h1>
-            <p class="hero-subtitle">Master the fundamentals. Build your game. Earn your name.</p>
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero__content fade-in">
+            <div class="hero__badge">BTB ACADEMY</div>
+            <h1 class="hero__title">MASTER THE GAME</h1>
+            <p class="hero__subtitle">A grade-based lacrosse curriculum with 3 levels, progress tracking, and a Wall of Fame. Master the fundamentals. Build your game. Earn your name.</p>
         </div>
     </section>
 
-    <!-- Player Login Bar -->
-    <div class="login-bar" id="loginBar">
-        <div class="login-bar-inner" id="loginInner">
-            <!-- JS will populate: input form or welcome message -->
-        </div>
-    </div>
+    <!-- ═══════════════════════════════════════
+         CURRICULUM LEVELS
+         ═══════════════════════════════════════ -->
+    <section class="levels-section">
+        <div class="container">
+            <div class="fade-in" style="text-align:center; margin-bottom:56px;">
+                <span class="section__tag">Curriculum</span>
+                <h2 class="section__title">THREE LEVELS OF MASTERY</h2>
+            </div>
 
-    <!-- Level Selector -->
-    <section class="levels-section reveal" id="levelsSection">
-        <div class="levels-grid" id="levelsGrid">
-            <!-- JS will populate -->
+            <div class="grid grid--3 stagger">
+                <!-- Bronze -->
+                <div class="level-card level-card--bronze">
+                    <div class="level-card__icon">&#129353;</div>
+                    <div class="level-card__level">Bronze Level</div>
+                    <h3 class="level-card__title">FOUNDATION</h3>
+                    <div class="level-card__grades">Grades 3 - 5</div>
+                    <p class="level-card__focus"><strong>Focus:</strong> Fundamental skills, basic game understanding</p>
+                    <ul class="level-card__skills">
+                        <li>Cradling</li>
+                        <li>Passing</li>
+                        <li>Catching</li>
+                        <li>Ground balls</li>
+                        <li>Basic positioning</li>
+                    </ul>
+                    <div class="level-card__graduation">
+                        <strong>Graduation:</strong> Complete all Bronze skill assessments
+                    </div>
+                </div>
+
+                <!-- Silver -->
+                <div class="level-card level-card--silver">
+                    <div class="level-card__icon">&#129352;</div>
+                    <div class="level-card__level">Silver Level</div>
+                    <h3 class="level-card__title">DEVELOPMENT</h3>
+                    <div class="level-card__grades">Grades 6 - 8</div>
+                    <p class="level-card__focus"><strong>Focus:</strong> Advanced skills, team concepts, lacrosse IQ</p>
+                    <ul class="level-card__skills">
+                        <li>Dodging</li>
+                        <li>Shooting</li>
+                        <li>Defensive footwork</li>
+                        <li>Off-ball movement</li>
+                        <li>Film study basics</li>
+                    </ul>
+                    <div class="level-card__graduation">
+                        <strong>Graduation:</strong> Complete all Silver assessments + demonstrate game application
+                    </div>
+                </div>
+
+                <!-- Gold -->
+                <div class="level-card level-card--gold">
+                    <div class="level-card__icon">&#129351;</div>
+                    <div class="level-card__level">Gold Level</div>
+                    <h3 class="level-card__title">ELITE</h3>
+                    <div class="level-card__grades">Grades 9 - 12</div>
+                    <p class="level-card__focus"><strong>Focus:</strong> Elite performance, leadership, college preparation</p>
+                    <ul class="level-card__skills">
+                        <li>Advanced systems</li>
+                        <li>Position specialization</li>
+                        <li>Film analysis</li>
+                        <li>Mental preparation</li>
+                    </ul>
+                    <div class="level-card__graduation">
+                        <strong>Graduation:</strong> Complete Gold assessments + coaching recommendation
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Chapters Grid -->
-    <section class="chapters-section" id="chaptersSection">
-        <div class="chapters-container">
-            <div class="chapters-header">
-                <h2 id="chaptersTitle">FOUNDATIONS</h2>
-                <span class="chapters-progress-text" id="chaptersProgress">0 / 8 Chapters</span>
+    <!-- ═══════════════════════════════════════
+         PROGRESS TRACKING
+         ═══════════════════════════════════════ -->
+    <section class="progress-section">
+        <div class="container">
+            <div class="fade-in" style="text-align:center; margin-bottom:56px;">
+                <span class="section__tag">Your Journey</span>
+                <h2 class="section__title">TRACK YOUR PROGRESS</h2>
             </div>
-            <div class="chapters-grid" id="chaptersGrid">
-                <!-- JS will populate -->
+
+            <!-- Bronze Progress -->
+            <div class="progress-card progress-card--bronze fade-in" data-level="bronze">
+                <div class="progress-card__header">
+                    <div class="progress-card__label">BRONZE LEVEL &mdash; FOUNDATION</div>
+                    <div class="progress-card__pct" data-pct="bronze">0%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar__fill" data-bar="bronze"></div>
+                </div>
+                <ul class="checklist" data-checklist="bronze">
+                    <li data-skill="bronze-cradling"><span class="check-box">&#10003;</span> Cradling</li>
+                    <li data-skill="bronze-passing"><span class="check-box">&#10003;</span> Passing</li>
+                    <li data-skill="bronze-catching"><span class="check-box">&#10003;</span> Catching</li>
+                    <li data-skill="bronze-groundballs"><span class="check-box">&#10003;</span> Ground balls</li>
+                    <li data-skill="bronze-positioning"><span class="check-box">&#10003;</span> Basic positioning</li>
+                </ul>
+            </div>
+
+            <!-- Silver Progress -->
+            <div class="progress-card progress-card--silver fade-in" data-level="silver">
+                <div class="progress-card__header">
+                    <div class="progress-card__label">SILVER LEVEL &mdash; DEVELOPMENT</div>
+                    <div class="progress-card__pct" data-pct="silver">0%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar__fill" data-bar="silver"></div>
+                </div>
+                <ul class="checklist" data-checklist="silver">
+                    <li data-skill="silver-dodging"><span class="check-box">&#10003;</span> Dodging</li>
+                    <li data-skill="silver-shooting"><span class="check-box">&#10003;</span> Shooting</li>
+                    <li data-skill="silver-defense"><span class="check-box">&#10003;</span> Defensive footwork</li>
+                    <li data-skill="silver-offball"><span class="check-box">&#10003;</span> Off-ball movement</li>
+                    <li data-skill="silver-film"><span class="check-box">&#10003;</span> Film study basics</li>
+                </ul>
+            </div>
+
+            <!-- Gold Progress -->
+            <div class="progress-card progress-card--gold fade-in" data-level="gold">
+                <div class="progress-card__header">
+                    <div class="progress-card__label">GOLD LEVEL &mdash; ELITE</div>
+                    <div class="progress-card__pct" data-pct="gold">0%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar__fill" data-bar="gold"></div>
+                </div>
+                <ul class="checklist" data-checklist="gold">
+                    <li data-skill="gold-systems"><span class="check-box">&#10003;</span> Advanced systems</li>
+                    <li data-skill="gold-specialization"><span class="check-box">&#10003;</span> Position specialization</li>
+                    <li data-skill="gold-filmanalysis"><span class="check-box">&#10003;</span> Film analysis</li>
+                    <li data-skill="gold-mental"><span class="check-box">&#10003;</span> Mental preparation</li>
+                </ul>
+            </div>
+
+            <div class="progress-info fade-in">
+                <p>Check off skills as you complete them. Your progress is saved automatically and will be here when you return. Complete all skills in a level to advance to the next.</p>
             </div>
         </div>
     </section>
 
-    <!-- Wall of Fame -->
-    <section class="wall-of-fame reveal" id="wallOfFame">
-        <div class="wall-of-fame-inner">
-            <div class="wof-header">
-                <div class="section-label">Hall of Achievement</div>
-                <h2>WALL OF FAME</h2>
+    <!-- ═══════════════════════════════════════
+         WALL OF FAME
+         ═══════════════════════════════════════ -->
+    <section class="wof-section">
+        <div class="container">
+            <div class="fade-in" style="text-align:center; margin-bottom:16px;">
+                <span class="section__tag">Honor Roll</span>
+                <h2 class="section__title" style="color:var(--white);">WALL OF FAME</h2>
+                <p class="section__subtitle" style="margin:0 auto;">Players who complete all three levels earn their place on the BTB Wall of Fame.</p>
             </div>
 
-            <div class="wof-level">
-                <div class="wof-level-title green">&#127942; Foundations — Level 1 Graduates</div>
-                <div class="wof-names" id="wofLevel1">
-                    <div class="wof-name placeholder">Your name could be here</div>
-                    <div class="wof-name placeholder">Your name could be here</div>
+            <div class="wof-grid stagger">
+                <div class="wof-card">
+                    <div class="wof-card__avatar">&#127942;</div>
+                    <div class="wof-card__name">COMING SOON</div>
+                    <div class="wof-card__status">Future Graduate</div>
+                </div>
+                <div class="wof-card">
+                    <div class="wof-card__avatar">&#127942;</div>
+                    <div class="wof-card__name">COMING SOON</div>
+                    <div class="wof-card__status">Future Graduate</div>
+                </div>
+                <div class="wof-card">
+                    <div class="wof-card__avatar">&#127942;</div>
+                    <div class="wof-card__name">COMING SOON</div>
+                    <div class="wof-card__status">Future Graduate</div>
                 </div>
             </div>
 
-            <div class="wof-level">
-                <div class="wof-level-title gold">&#127942; Development — Level 2 Graduates</div>
-                <div class="wof-names" id="wofLevel2">
-                    <div class="wof-name placeholder">Your name could be here</div>
-                </div>
-            </div>
+            <p class="wof-coming-soon fade-in">The first class of Wall of Fame inductees is on the way. Will your name be up here?</p>
+        </div>
+    </section>
 
-            <div class="wof-level">
-                <div class="wof-level-title red">&#127942; Elite — Level 3 Graduates</div>
-                <div class="wof-names" id="wofLevel3">
-                    <div class="wof-name placeholder">Your name could be here</div>
-                </div>
-            </div>
-
-            <div class="wof-submit">
-                <p>Completed a level? Submit your name for the Wall of Fame.</p>
-                <a id="submitBtn" href="#" class="btn btn-primary">Submit Your Completion</a>
+    <!-- ═══════════════════════════════════════
+         CTA SECTION
+         ═══════════════════════════════════════ -->
+    <section class="cta-section">
+        <div class="container fade-in">
+            <span class="section__tag">Get Started</span>
+            <h2 class="section__title">START YOUR JOURNEY</h2>
+            <p class="section__subtitle">Choose your program and begin mastering the game. Every great player starts with the fundamentals.</p>
+            <div class="cta-buttons">
+                <a href="academy-boys.html" class="btn btn--red btn--lg">Boys Academy</a>
+                <a href="academy-girls.html" class="btn btn--outline btn--lg">Girls Academy</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">BTB <span>LACROSSE</span></a>
-                <p>A structured lacrosse development program built on accountability, film study, and intentional coaching. Long Island, NY.</p>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener" title="Instagram" aria-label="BTB on Instagram">IG</a>
-                    <a href="https://www.youtube.com/@bethebestlacrosse" target="_blank" rel="noopener" title="YouTube" aria-label="BTB on YouTube">YT</a>
+    <!-- ═══════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__brand-name">BTB <span>LACROSSE</span></div>
+                    <p>A structured lacrosse development program built on accountability, film study, and intentional coaching. Long Island, NY.</p>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener" aria-label="BTB on Instagram">IG</a>
+                        <a href="https://www.youtube.com/@bethebestlacrosse" target="_blank" rel="noopener" aria-label="BTB on YouTube">YT</a>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h4>Program</h4>
+                    <a href="index.html">Our Standard</a>
+                    <a href="index.html#development">Development Model</a>
+                    <a href="index.html#filmstudy">Film Study</a>
+                    <a href="coach-bios.html">Coach Bios</a>
+                    <a href="index.html#results">Results</a>
+                </div>
+                <div class="footer__col">
+                    <h4>Resources</h4>
+                    <a href="players-hub.html">Players Hub</a>
+                    <a href="coaches.html">Coaching Playbook</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer__col">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@bethebestli.com">info@bethebestli.com</a>
+                    <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener">@bethebestli</a>
+                    <a>Long Island, NY</a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Program</h4>
-                <a href="index.html">Our Standard</a>
-                <a href="index.html#development">Development Model</a>
-                <a href="index.html#filmstudy">Film Study</a>
-                <a href="coach-bios.html">Coach Bios</a>
-                <a href="index.html#results">Results</a>
+            <div class="footer__bottom">
+                &copy; 2026 Be The Best Lacrosse. All rights reserved.
             </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <a href="players-hub.html">Players Hub</a>
-                <a href="coaches.html">Coaching Playbook</a>
-                <a href="testimonials.html">Testimonials</a>
-                <a href="faq.html">FAQ</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <a href="mailto:info@bethebestli.com">info@bethebestli.com</a>
-                <a href="https://www.instagram.com/bethebestli/" target="_blank" rel="noopener">@bethebestli</a>
-                <a>Long Island, NY</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 Be The Best Lacrosse. All rights reserved.
         </div>
     </footer>
 
     <script>
-        /* ========================================
-           1. CURRICULUM DATA
-           ======================================== */
-        var LEVELS = [
-            {
-                key: 'level1',
-                name: 'FOUNDATIONS',
-                subtitle: 'Level 1',
-                grades: 'Grades 2–4',
-                colorClass: 'level-green',
-                activeClass: 'level-green-active',
-                chapters: [
-                    {
-                        title: 'Cradling Basics',
-                        desc: 'Proper grip, wrist motion, protecting the ball',
-                        fullDesc: 'Learn the foundation of every lacrosse skill — cradling. Master the proper grip on your stick, develop fluid wrist motion, and understand how to protect the ball while moving. This is the starting point for every great player.',
-                        points: [
-                            'Grip the stick with your top hand loose and bottom hand firm',
-                            'Use your wrists, not your arms — smooth and controlled motion',
-                            'Keep the stick head close to your body while cradling',
-                            'Practice cradling with both hands from day one',
-                            'Cradle while walking, jogging, then running at full speed'
-                        ]
-                    },
-                    {
-                        title: 'Dodging Fundamentals',
-                        desc: 'Split dodge, face dodge, roll dodge basics',
-                        fullDesc: 'Dodging is how you beat defenders and create scoring opportunities. Learn the three fundamental dodges that every player needs in their toolbox.',
-                        points: [
-                            'Split dodge: switch hands quickly while changing direction',
-                            'Face dodge: pull stick across your face to protect while driving',
-                            'Roll dodge: use your body to shield the stick as you spin past',
-                            'Set up every dodge with a hard first step',
-                            'Read the defender\'s hips to choose the right dodge'
-                        ]
-                    },
-                    {
-                        title: 'Shooting Mechanics',
-                        desc: 'Hand position, stance, follow-through',
-                        fullDesc: 'Scoring goals starts with proper shooting mechanics. Focus on hand position, body stance, and a complete follow-through to generate power and accuracy.',
-                        points: [
-                            'Hands apart for power — top hand at the head, bottom at the butt',
-                            'Step with your opposite foot toward the target',
-                            'Follow through pointing your stick where you want the ball to go',
-                            'Aim for corners — high and low',
-                            'Start close to the goal and work your way out'
-                        ]
-                    },
-                    {
-                        title: 'Shooting on the Run',
-                        desc: 'Footwork, timing, accuracy while moving',
-                        fullDesc: 'In game situations, you rarely get to shoot standing still. Learn how to maintain accuracy and power while moving at full speed toward the goal.',
-                        points: [
-                            'Time your release with your stride — shoot off your front foot',
-                            'Keep your eyes on the target, not the ball',
-                            'Practice shooting from different angles while running',
-                            'Use your momentum to add power to your shot',
-                            'Start slow and build speed as your mechanics improve'
-                        ]
-                    },
-                    {
-                        title: 'How to Play Defense',
-                        desc: 'Body position, footwork, stick placement',
-                        fullDesc: 'Great defense wins championships. Learn the fundamentals of body positioning, proper footwork, and how to use your stick to disrupt the offense.',
-                        points: [
-                            'Stay in a low athletic stance with your feet wider than shoulder-width',
-                            'Keep your stick in a position to deliver a check or poke',
-                            'Move your feet — don\'t reach with your stick',
-                            'Stay between your man and the goal at all times',
-                            'Communicate with teammates about slides and switches'
-                        ]
-                    },
-                    {
-                        title: 'On-Ball Offense',
-                        desc: 'Dodging with purpose, reading the defender',
-                        fullDesc: 'Being an effective on-ball player means more than just dodging — it means reading the defense and making smart decisions with the ball.',
-                        points: [
-                            'Attack with your head up — see the whole field',
-                            'Use dodges to create advantages, not just to dodge',
-                            'Read the defender\'s body position before choosing your move',
-                            'If a slide comes, find the open man',
-                            'Finish strong — every dodge should end with a shot or quality pass'
-                        ]
-                    },
-                    {
-                        title: 'Off-Ball Offense & Defense',
-                        desc: 'Cutting, positioning, help defense',
-                        fullDesc: 'The best players are always active, even without the ball. Learn how to cut effectively on offense and provide help defense on the other end.',
-                        points: [
-                            'Cut hard to the goal when your teammate is dodging',
-                            'V-cut and L-cut to get open for passes',
-                            'Space the field — don\'t crowd the ball carrier',
-                            'On defense, be ready to slide and recover',
-                            'Always know where your man and the ball are'
-                        ]
-                    },
-                    {
-                        title: 'Being a Great Teammate',
-                        desc: 'Communication, effort, accountability',
-                        fullDesc: 'Lacrosse is the ultimate team sport. Learn what it means to be the kind of teammate that makes everyone around you better.',
-                        points: [
-                            'Communicate on every play — call out slides, picks, and ball position',
-                            'Give 100% effort whether it\'s practice or game day',
-                            'Hold yourself accountable before pointing fingers',
-                            'Celebrate teammates\' successes and pick them up after mistakes',
-                            'Lead by example in drills, conditioning, and attitude'
-                        ]
-                    }
-                ]
-            },
-            {
-                key: 'level2',
-                name: 'DEVELOPMENT',
-                subtitle: 'Level 2',
-                grades: 'Grades 5–7',
-                colorClass: 'level-gold',
-                activeClass: 'level-gold-active',
-                chapters: [
-                    {
-                        title: 'Advanced Stick Skills',
-                        desc: 'Weak hand, behind-the-back, quick release',
-                        fullDesc: 'Take your stick skills to the next level. Develop your weak hand, learn behind-the-back passes and shots, and work on a lightning-fast release.',
-                        points: [
-                            'Spend equal time training your weak hand — it should feel natural',
-                            'Behind-the-back passes: keep your elbow up and snap your wrists',
-                            'Quick release comes from soft hands and proper stick preparation',
-                            'Practice one-handed cradles and ground ball pickups',
-                            'Wall ball with both hands — 100 reps each, every day'
-                        ]
-                    },
-                    {
-                        title: 'Transition Offense',
-                        desc: 'Fast breaks, outlet passes, numbered advantages',
-                        fullDesc: 'Transition is where games are won and lost. Learn how to push the ball in transition, make outlet passes, and capitalize on numbered advantages.',
-                        points: [
-                            'After a turnover or save, look to outlet immediately',
-                            'Fill lanes wide — attack with speed and spacing',
-                            'In a 4-on-3, force the defense to commit, then find the open man',
-                            'Trail players should sprint to fill — don\'t jog back',
-                            'Communication is key — call out numbers and matchups'
-                        ]
-                    },
-                    {
-                        title: 'Team Defense Concepts',
-                        desc: 'Slides, rotations, communication systems',
-                        fullDesc: 'Defense is a team effort. Learn slide packages, rotation principles, and how to communicate as a defensive unit.',
-                        points: [
-                            'Understand adjacent and crease slide responsibilities',
-                            'Rotate quickly after a slide — fill the open man',
-                            'Use verbal calls: "I\'m hot," "I\'m two," "Check!"',
-                            'Trust the system — don\'t freelance on defense',
-                            'Film study helps you recognize offensive sets faster'
-                        ]
-                    },
-                    {
-                        title: 'Settled Offense',
-                        desc: 'Motion principles, spacing, ball movement',
-                        fullDesc: 'Learn how organized offenses work. Understand motion principles, proper spacing, and how to move the ball to create scoring opportunities.',
-                        points: [
-                            'Maintain a 2-3-1 or 1-4-1 formation with proper spacing',
-                            'Move the ball faster than the defense can slide',
-                            'Set picks and use them effectively — roll or fade',
-                            'Every player should be a threat — move with purpose',
-                            'Ball movement beats individual effort every time'
-                        ]
-                    },
-                    {
-                        title: 'Man-Up / Man-Down',
-                        desc: 'Extra-man offense, short-handed defense',
-                        fullDesc: 'Special situations can swing games. Learn how to execute on extra-man opportunities and how to lock down when you\'re a man short.',
-                        points: [
-                            'Man-up: quick ball movement to exploit the gap in the zone',
-                            'Use skip passes to move the defense and create open shots',
-                            'Man-down: high energy, active sticks, deny the middle',
-                            'Communicate constantly — know who\'s covering where',
-                            'Practice these situations every week — they decide close games'
-                        ]
-                    },
-                    {
-                        title: 'Game IQ & Film Study',
-                        desc: 'Reading plays, anticipation, decision-making',
-                        fullDesc: 'The smartest players see the game before it happens. Develop your lacrosse IQ through film study, play recognition, and better decision-making.',
-                        points: [
-                            'Watch film of your own games — identify patterns and mistakes',
-                            'Study college and pro games — observe off-ball movement',
-                            'Anticipate plays by reading offensive and defensive formations',
-                            'Make faster decisions by seeing the field with your peripheral vision',
-                            'Keep a mental playbook — know your team\'s sets inside and out'
-                        ]
-                    },
-                    {
-                        title: 'Conditioning & Athleticism',
-                        desc: 'Sport-specific fitness, agility, speed',
-                        fullDesc: 'Lacrosse is a demanding sport. Build the conditioning, agility, and speed that will keep you performing at your best from the first whistle to the last.',
-                        points: [
-                            'Mix long-distance runs with sprint intervals — lacrosse is both',
-                            'Agility ladders and cone drills improve footwork',
-                            'Core strength is the foundation of every athletic movement',
-                            'Recovery matters — stretch, hydrate, and sleep well',
-                            'Train like an athlete year-round, not just during season'
-                        ]
-                    },
-                    {
-                        title: 'On-Field Leadership',
-                        desc: 'Directing teammates, leading by example',
-                        fullDesc: 'Every team needs leaders on the field. Learn how to direct your teammates, communicate effectively, and lead through your actions.',
-                        points: [
-                            'Be the loudest voice on defense — direct slides and matchups',
-                            'Lead by example: be first in line, last to leave',
-                            'Stay positive under pressure — your teammates feed off your energy',
-                            'Hold teammates accountable respectfully — it builds trust',
-                            'Great leaders make everyone around them better'
-                        ]
-                    }
-                ]
-            },
-            {
-                key: 'level3',
-                name: 'ELITE',
-                subtitle: 'Level 3',
-                grades: 'Grades 8–10',
-                colorClass: 'level-red',
-                activeClass: 'level-red-active',
-                chapters: [
-                    {
-                        title: 'College-Level Offensive Systems',
-                        desc: 'Motion, invert, two-man game',
-                        fullDesc: 'Understand the offensive systems used at the college level. Learn motion offense, inverted sets, and how to execute the two-man game at a high level.',
-                        points: [
-                            'Motion offense: continuous movement, interchangeable positions',
-                            'Invert offense: attackmen up top, middies down low — creates mismatches',
-                            'Two-man game: pick-and-roll concepts adapted for lacrosse',
-                            'Study how top college programs run their offense',
-                            'Execution comes from repetition — drill these sets daily'
-                        ]
-                    },
-                    {
-                        title: 'Advanced Defensive Schemes',
-                        desc: 'Zone, matchup, pressure packages',
-                        fullDesc: 'At the elite level, defense goes beyond man-to-man. Learn zone defense principles, matchup zones, and how to apply pressure packages.',
-                        points: [
-                            'Zone defense: protect the crease, force outside shots',
-                            'Matchup zone: combines zone principles with man responsibilities',
-                            'Pressure packages: double teams, traps, and full-field pressure',
-                            'Adjust defensive schemes based on opponent scouting',
-                            'Communication upgrades: pre-snap calls and defensive audibles'
-                        ]
-                    },
-                    {
-                        title: 'Face-Offs & Draws',
-                        desc: 'Technique, counters, wing play',
-                        fullDesc: 'Possessions start with face-offs and draws. Master the techniques, learn counter moves, and understand wing play responsibilities.',
-                        points: [
-                            'Develop 2-3 reliable face-off moves and practice them obsessively',
-                            'Read your opponent — adjust your technique based on their setup',
-                            'Wing players: anticipate the clamp direction and react instantly',
-                            'Ground ball battles after the face-off are just as important',
-                            'Study the top FOGO specialists — technique always beats strength'
-                        ]
-                    },
-                    {
-                        title: 'The Recruiting Process',
-                        desc: 'Timeline, emails, campus visits, film',
-                        fullDesc: 'Navigating the college recruiting process can be overwhelming. Learn the timeline, how to reach out to coaches, plan campus visits, and put together your best film.',
-                        points: [
-                            'Start researching schools and programs by 8th grade',
-                            'Send personalized emails to coaches — not mass emails',
-                            'Attend prospect days and college camps to get seen',
-                            'Keep your grades up — academics open doors athletics can\'t',
-                            'Build a highlight reel that showcases your best AND most versatile play'
-                        ]
-                    },
-                    {
-                        title: 'Building Your Highlight Reel',
-                        desc: 'What coaches look for, editing tips',
-                        fullDesc: 'Your highlight reel is your resume. Learn what college coaches actually look for, how to select the right clips, and editing best practices.',
-                        points: [
-                            'Lead with your best plays — coaches decide in 30 seconds',
-                            'Show a variety: goals, assists, ground balls, defensive plays',
-                            'Include full-speed AND slow-motion clips',
-                            'Keep it under 3-4 minutes — quality over quantity',
-                            'Add your name, number, position, and graduation year at the start'
-                        ]
-                    },
-                    {
-                        title: 'High-Level Leadership',
-                        desc: 'Captain mentality, culture building',
-                        fullDesc: 'Elite leadership goes beyond being vocal. Learn how to build team culture, develop a captain\'s mentality, and create an environment where everyone gets better.',
-                        points: [
-                            'Set the standard in practice — the team follows the captain\'s effort',
-                            'Build relationships with every player on the roster',
-                            'Address issues directly and privately — never call out in public',
-                            'Create team traditions and accountability systems',
-                            'Great captains serve the team, not their ego'
-                        ]
-                    },
-                    {
-                        title: 'Mental Game & Preparation',
-                        desc: 'Pre-game routines, handling pressure',
-                        fullDesc: 'The mental side of the game separates good from great. Develop pre-game routines, learn to handle pressure, and build the mental toughness that elite players need.',
-                        points: [
-                            'Develop a consistent pre-game routine — same warm-up, same mindset',
-                            'Visualization: see yourself making plays before the game starts',
-                            'Control what you can control — effort, attitude, preparation',
-                            'Learn to reset after mistakes — the next play is the most important',
-                            'Embrace pressure situations — they\'re where legends are made'
-                        ]
-                    },
-                    {
-                        title: 'College Prep & Communication',
-                        desc: 'Academics, coach outreach, interviews',
-                        fullDesc: 'Getting recruited is about more than lacrosse. Learn how to prepare academically, communicate professionally with coaches, and present yourself as a complete student-athlete.',
-                        points: [
-                            'Maintain a strong GPA and take challenging courses',
-                            'Practice professional communication — emails, phone calls, interviews',
-                            'Research each school thoroughly before reaching out',
-                            'Prepare questions for campus visits that show genuine interest',
-                            'Be yourself — coaches recruit people, not just players'
-                        ]
-                    }
-                ]
+    (function() {
+        /* ── Hamburger Toggle ── */
+        var hamburger = document.getElementById('hamburger');
+        var navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            var expanded = navLinks.classList.contains('open');
+            hamburger.setAttribute('aria-expanded', String(expanded));
+        });
+
+        document.querySelectorAll('.nav a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        /* ── Scroll Shadow ── */
+        var navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-        ];
+        }, { passive: true });
 
-        var TOTAL_CHAPTERS = 8;
-        var STORAGE_KEY = 'btb-academy-progress';
-        var NAME_KEY = 'btb-academy-name';
-        var activeLevel = 0;
-        var expandedChapter = -1;
+        /* ── Scroll Reveal ── */
+        var reveals = document.querySelectorAll('.fade-in, .stagger');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-        /* ========================================
-           2. PROGRESS MANAGEMENT
-           ======================================== */
-        function getProgress() {
+        reveals.forEach(function(el) {
+            observer.observe(el);
+        });
+
+        /* ── Particles ── */
+        var container = document.getElementById('particles');
+        for (var i = 0; i < 30; i++) {
+            var p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDelay = Math.random() * 8 + 's';
+            p.style.animationDuration = (6 + Math.random() * 6) + 's';
+            p.style.width = p.style.height = (2 + Math.random() * 4) + 'px';
+            container.appendChild(p);
+        }
+
+        /* ── Progress Tracking with localStorage ── */
+        var STORAGE_KEY = 'btb_academy_progress';
+
+        function loadProgress() {
             try {
-                var stored = localStorage.getItem(STORAGE_KEY);
-                if (stored) return JSON.parse(stored);
-            } catch (e) {}
-            return { level1: [], level2: [], level3: [], completedLevels: [] };
+                var data = localStorage.getItem(STORAGE_KEY);
+                return data ? JSON.parse(data) : {};
+            } catch (e) {
+                return {};
+            }
         }
 
         function saveProgress(progress) {
             try {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-            } catch (e) {}
+            } catch (e) { /* silent */ }
         }
 
-        function getPlayerName() {
-            try {
-                return localStorage.getItem(NAME_KEY) || '';
-            } catch (e) { return ''; }
+        function updateProgressBar(level) {
+            var checklist = document.querySelector('[data-checklist="' + level + '"]');
+            if (!checklist) return;
+            var items = checklist.querySelectorAll('li');
+            var checked = checklist.querySelectorAll('li.checked');
+            var pct = items.length > 0 ? Math.round((checked.length / items.length) * 100) : 0;
+
+            var bar = document.querySelector('[data-bar="' + level + '"]');
+            var pctLabel = document.querySelector('[data-pct="' + level + '"]');
+            if (bar) bar.style.width = pct + '%';
+            if (pctLabel) pctLabel.textContent = pct + '%';
         }
 
-        function savePlayerName(name) {
-            try {
-                localStorage.setItem(NAME_KEY, name);
-            } catch (e) {}
-        }
+        function initChecklist() {
+            var progress = loadProgress();
+            var allItems = document.querySelectorAll('.checklist li[data-skill]');
 
-        function isLevelUnlocked(levelIndex) {
-            if (levelIndex === 0) return true;
-            var progress = getProgress();
-            var prevKey = 'level' + levelIndex; // level1 for index 0, so prev for index 1 is level1
-            var prevCompleted = progress[prevKey] || [];
-            return prevCompleted.length >= TOTAL_CHAPTERS;
-        }
+            allItems.forEach(function(item) {
+                var skill = item.getAttribute('data-skill');
 
-        function isChapterAvailable(levelIndex, chapterIndex) {
-            if (chapterIndex === 0) return true;
-            var progress = getProgress();
-            var levelKey = 'level' + (levelIndex + 1);
-            var completed = progress[levelKey] || [];
-            // Chapter is available if previous chapter is completed
-            return completed.indexOf(chapterIndex - 1) !== -1;
-        }
+                // Restore saved state
+                if (progress[skill]) {
+                    item.classList.add('checked');
+                }
 
-        function isChapterCompleted(levelIndex, chapterIndex) {
-            var progress = getProgress();
-            var levelKey = 'level' + (levelIndex + 1);
-            var completed = progress[levelKey] || [];
-            return completed.indexOf(chapterIndex) !== -1;
-        }
+                // Click handler
+                item.addEventListener('click', function() {
+                    item.classList.toggle('checked');
+                    var currentProgress = loadProgress();
+                    if (item.classList.contains('checked')) {
+                        currentProgress[skill] = true;
+                    } else {
+                        delete currentProgress[skill];
+                    }
+                    saveProgress(currentProgress);
 
-        function toggleChapterComplete(levelIndex, chapterIndex) {
-            var progress = getProgress();
-            var levelKey = 'level' + (levelIndex + 1);
-            if (!progress[levelKey]) progress[levelKey] = [];
-
-            var pos = progress[levelKey].indexOf(chapterIndex);
-            if (pos === -1) {
-                progress[levelKey].push(chapterIndex);
-            } else {
-                progress[levelKey].splice(pos, 1);
-                // Also uncomplete subsequent chapters
-                progress[levelKey] = progress[levelKey].filter(function(idx) {
-                    return idx < chapterIndex;
+                    var level = item.closest('[data-level]').getAttribute('data-level');
+                    updateProgressBar(level);
                 });
-            }
-
-            // Check if level is now complete
-            if (!progress.completedLevels) progress.completedLevels = [];
-            if (progress[levelKey].length >= TOTAL_CHAPTERS) {
-                if (progress.completedLevels.indexOf(levelKey) === -1) {
-                    progress.completedLevels.push(levelKey);
-                }
-            } else {
-                var clPos = progress.completedLevels.indexOf(levelKey);
-                if (clPos !== -1) progress.completedLevels.splice(clPos, 1);
-            }
-
-            saveProgress(progress);
-            renderAll();
-        }
-
-        function getLevelProgress(levelIndex) {
-            var progress = getProgress();
-            var levelKey = 'level' + (levelIndex + 1);
-            return (progress[levelKey] || []).length;
-        }
-
-        /* ========================================
-           3. PLAYER LOGIN
-           ======================================== */
-        function renderLoginBar() {
-            var inner = document.getElementById('loginInner');
-            var name = getPlayerName();
-
-            if (name) {
-                inner.innerHTML = '<div class="welcome-msg">Welcome back, <span>' +
-                    escapeHtml(name) + '</span>' +
-                    '<a class="change-link" onclick="clearPlayerName()">Change</a></div>';
-                updateSubmitBtn(name);
-            } else {
-                inner.innerHTML = '<input type="text" id="playerNameInput" placeholder="Enter your name to get started..." maxlength="50">' +
-                    '<button onclick="submitPlayerName()">Continue</button>';
-                var input = document.getElementById('playerNameInput');
-                if (input) {
-                    input.addEventListener('keypress', function(e) {
-                        if (e.key === 'Enter') submitPlayerName();
-                    });
-                }
-            }
-        }
-
-        function submitPlayerName() {
-            var input = document.getElementById('playerNameInput');
-            if (!input) return;
-            var name = input.value.trim();
-            if (!name) return;
-            savePlayerName(name);
-            renderLoginBar();
-        }
-
-        function clearPlayerName() {
-            try { localStorage.removeItem(NAME_KEY); } catch(e) {}
-            renderLoginBar();
-        }
-
-        function escapeHtml(str) {
-            var div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
-        }
-
-        function updateSubmitBtn(name) {
-            var btn = document.getElementById('submitBtn');
-            if (!btn || !name) return;
-            var progress = getProgress();
-            var completedLevel = '';
-            if (progress.completedLevels && progress.completedLevels.length > 0) {
-                var last = progress.completedLevels[progress.completedLevels.length - 1];
-                if (last === 'level1') completedLevel = 'Foundations (Level 1)';
-                if (last === 'level2') completedLevel = 'Development (Level 2)';
-                if (last === 'level3') completedLevel = 'Elite (Level 3)';
-            }
-            var subject = encodeURIComponent('Wall of Fame Submission — ' + name + (completedLevel ? ' — ' + completedLevel : ''));
-            var body = encodeURIComponent('Player Name: ' + name + '\nLevel Completed: ' + (completedLevel || 'In Progress') + '\n\nI have completed the BTB Lacrosse Academy curriculum and would like to be added to the Wall of Fame.');
-            btn.href = 'mailto:info@bethebestli.com?subject=' + subject + '&body=' + body;
-        }
-
-        /* ========================================
-           4. LEVEL CARDS
-           ======================================== */
-        function renderLevels() {
-            var grid = document.getElementById('levelsGrid');
-            grid.innerHTML = '';
-
-            LEVELS.forEach(function(level, idx) {
-                var unlocked = isLevelUnlocked(idx);
-                var completed = getLevelProgress(idx);
-                var percent = (completed / TOTAL_CHAPTERS) * 100;
-                var isActive = idx === activeLevel;
-
-                var card = document.createElement('div');
-                card.className = 'level-card ' + level.colorClass +
-                    (isActive ? ' active' : '') +
-                    (!unlocked ? ' locked' : '');
-
-                card.innerHTML =
-                    (!unlocked ? '<div class="lock-icon">&#128274;</div>' : '') +
-                    '<div class="level-number">' + level.subtitle + '</div>' +
-                    '<div class="level-name">' + level.name + '</div>' +
-                    '<div class="level-grades">' + level.grades + '</div>' +
-                    '<div class="level-chapters">' + completed + ' / ' + TOTAL_CHAPTERS + ' chapters' +
-                    (completed >= TOTAL_CHAPTERS ? ' &#10003;' : '') + '</div>' +
-                    '<div class="level-progress-track"><div class="level-progress-fill" style="width:' + percent + '%"></div></div>';
-
-                if (unlocked) {
-                    card.addEventListener('click', function() {
-                        activeLevel = idx;
-                        expandedChapter = -1;
-                        renderAll();
-                    });
-                }
-
-                grid.appendChild(card);
             });
+
+            // Initial bar update
+            ['bronze', 'silver', 'gold'].forEach(updateProgressBar);
         }
 
-        /* ========================================
-           5. CHAPTER GRID
-           ======================================== */
-        function renderChapters() {
-            var level = LEVELS[activeLevel];
-            var grid = document.getElementById('chaptersGrid');
-            var titleEl = document.getElementById('chaptersTitle');
-            var progressEl = document.getElementById('chaptersProgress');
-            var section = document.getElementById('chaptersSection');
-
-            // Update active class for bullet colors
-            section.className = 'chapters-section ' + level.activeClass;
-
-            titleEl.textContent = level.name;
-            var completedCount = getLevelProgress(activeLevel);
-            progressEl.textContent = completedCount + ' / ' + TOTAL_CHAPTERS + ' Chapters';
-
-            grid.innerHTML = '';
-
-            level.chapters.forEach(function(chapter, idx) {
-                var completed = isChapterCompleted(activeLevel, idx);
-                var available = isChapterAvailable(activeLevel, idx);
-                var isExpanded = expandedChapter === idx;
-                var locked = !available && !completed;
-
-                var card = document.createElement('div');
-                card.className = 'chapter-card' +
-                    (completed ? ' ch-completed' : '') +
-                    (locked ? ' ch-locked' : '') +
-                    (isExpanded ? ' ch-expanded' : '');
-
-                var numStr = (idx + 1 < 10 ? '0' : '') + (idx + 1);
-
-                var statusIcon = '';
-                if (completed) {
-                    statusIcon = '&#10003;';
-                } else if (locked) {
-                    statusIcon = '&#128274;';
-                }
-
-                card.innerHTML =
-                    '<div class="chapter-card-header">' +
-                        '<div class="chapter-number">' + numStr + '</div>' +
-                        '<div class="chapter-info">' +
-                            '<div class="chapter-title">' + escapeHtml(chapter.title) + '</div>' +
-                            '<div class="chapter-desc">' + escapeHtml(chapter.desc) + '</div>' +
-                        '</div>' +
-                        '<div class="chapter-status">' + statusIcon + '</div>' +
-                    '</div>' +
-                    '<div class="chapter-panel">' +
-                        '<p class="chapter-panel-desc">' + escapeHtml(chapter.fullDesc) + '</p>' +
-                        '<h4>Key Coaching Points</h4>' +
-                        '<ul class="coaching-points">' +
-                            chapter.points.map(function(p) {
-                                return '<li>' + escapeHtml(p) + '</li>';
-                            }).join('') +
-                        '</ul>' +
-                        '<div class="video-placeholder">&#127909; Video coming soon</div>' +
-                        (completed ?
-                            '<button class="btn-mark-complete unmark" onclick="event.stopPropagation(); toggleChapterComplete(' + activeLevel + ',' + idx + ')">&#8635; Undo Completion</button>' :
-                            '<button class="btn-mark-complete mark" onclick="event.stopPropagation(); toggleChapterComplete(' + activeLevel + ',' + idx + ')">&#10003; Mark Complete</button>'
-                        ) +
-                    '</div>';
-
-                if (!locked) {
-                    card.querySelector('.chapter-card-header').addEventListener('click', function() {
-                        expandedChapter = (expandedChapter === idx) ? -1 : idx;
-                        renderChapters();
-                    });
-                }
-
-                grid.appendChild(card);
-            });
-        }
-
-        /* ========================================
-           6. RENDER ALL
-           ======================================== */
-        function renderAll() {
-            renderLoginBar();
-            renderLevels();
-            renderChapters();
-        }
-
-        /* ========================================
-           7. PARTICLES
-           ======================================== */
-        function createParticles() {
-            var container = document.getElementById('heroParticles');
-            for (var i = 0; i < 30; i++) {
-                var p = document.createElement('div');
-                p.className = 'particle';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.animationDelay = Math.random() * 8 + 's';
-                p.style.animationDuration = (6 + Math.random() * 4) + 's';
-                p.style.width = p.style.height = (2 + Math.random() * 4) + 'px';
-                container.appendChild(p);
-            }
-        }
-
-        /* ========================================
-           8. SHARED SCRIPTS
-           ======================================== */
-        // Navbar scroll shadow
-        window.addEventListener('scroll', function() {
-            var header = document.getElementById('navbar');
-            if (window.scrollY > 40) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        function toggleMenu() {
-            var nav = document.getElementById('navLinks');
-            var btn = document.getElementById('hamburger');
-            nav.classList.toggle('open');
-            btn.classList.toggle('active');
-            var expanded = nav.classList.contains('open');
-            btn.setAttribute('aria-expanded', expanded);
-        }
-
-        document.querySelectorAll('.btb-nav a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.getElementById('navLinks').classList.remove('open');
-                document.getElementById('hamburger').classList.remove('active');
-                document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        // Scroll reveal
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12 });
-
-        document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
-
-        /* ========================================
-           9. INIT
-           ======================================== */
-        createParticles();
-        renderAll();
+        initChecklist();
+    })();
     </script>
 </body>
 </html>
