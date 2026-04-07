@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react"
-import type { User } from "@/types"
+import type { User, Gender } from "@/types"
 import * as authLib from "@/lib/auth"
 
 interface AuthContextValue {
@@ -9,6 +9,13 @@ interface AuthContextValue {
   login: (email: string, password: string) => Promise<User>
   logout: () => Promise<void>
   requestPasswordRecovery: (email: string) => Promise<void>
+  signup: (
+    email: string,
+    password: string,
+    fullName: string,
+    program: Gender,
+    gradYear?: string,
+  ) => Promise<{ requiresConfirmation: boolean }>
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
@@ -63,6 +70,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await authLib.requestPasswordRecovery(email)
   }, [])
 
+  const signup = useCallback(
+    async (email: string, password: string, fullName: string, program: Gender, gradYear?: string) => {
+      const result = await authLib.signup(email, password, fullName, program, gradYear)
+      // If no email confirmation is needed, auto-login
+      if (!result.requiresConfirmation) {
+        const u = await authLib.login(email, password)
+        setUser(u)
+      }
+      return result
+    },
+    [],
+  )
+
   return (
     <AuthContext.Provider
       value={{
@@ -72,6 +92,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         login,
         logout,
         requestPasswordRecovery,
+        signup,
       }}
     >
       {children}

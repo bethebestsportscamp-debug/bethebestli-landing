@@ -49,6 +49,27 @@ export async function login(email: string, password: string): Promise<User> {
 }
 
 /**
+ * Sign up with email + password + metadata.
+ * After signup, the user may need to confirm their email before they can log in.
+ */
+export async function signup(
+  email: string,
+  password: string,
+  fullName: string,
+  program: Gender,
+  gradYear?: string,
+): Promise<{ requiresConfirmation: boolean }> {
+  const result = await auth.signup(email, password, {
+    full_name: fullName,
+    program,
+    grad_year: gradYear,
+  })
+  // If email confirmation is required, the user object won't have a token yet
+  const requiresConfirmation = !result.token
+  return { requiresConfirmation }
+}
+
+/**
  * Log out the current user.
  */
 export async function logout(): Promise<void> {
