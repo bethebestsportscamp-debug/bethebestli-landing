@@ -11,21 +11,25 @@ interface SiteGateProps {
 
 export function SiteGate({ children }: SiteGateProps) {
   const location = useLocation()
-  const [unlocked, setUnlocked] = useState(false)
+  const [unlockedPath, setUnlockedPath] = useState<string | null>(null)
   const [input, setInput] = useState("")
   const [error, setError] = useState(false)
 
-  // Re-lock on every route change
+  // Synchronously derived — no flash. If the path changed, isUnlocked is false on the same render.
+  const isUnlocked = unlockedPath === location.pathname
+
+  // Reset form fields when navigating to a new page
   useEffect(() => {
-    setUnlocked(false)
-    setInput("")
-    setError(false)
-  }, [location.pathname])
+    if (!isUnlocked) {
+      setInput("")
+      setError(false)
+    }
+  }, [location.pathname, isUnlocked])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     if (input.trim() === SITE_PASSCODE) {
-      setUnlocked(true)
+      setUnlockedPath(location.pathname)
       setError(false)
     } else {
       setError(true)
@@ -33,11 +37,11 @@ export function SiteGate({ children }: SiteGateProps) {
     }
   }
 
-  if (unlocked) return <>{children}</>
+  if (isUnlocked) return <>{children}</>
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-6">
-      <div className="w-full max-w-md">
+    <div className="fixed inset-0 z-[9999] min-h-screen bg-black flex items-center justify-center px-6 overflow-auto">
+      <div className="w-full max-w-md py-12">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D22630]/10 border border-[#D22630]/30 mb-6">
             <Lock size={28} className="text-[#D22630]" />
