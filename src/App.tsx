@@ -6,7 +6,6 @@ import { HubLayout } from "@/layouts/HubLayout"
 import { ProtectedRoute } from "@/components/ProtectedRoute"
 import { ProgressBar } from "@/components/ProgressBar"
 import { SEO } from "@/components/shared/SEO"
-import { SiteGate } from "@/components/SiteGate"
 
 // Landing page sections
 import { Hero } from "@/components/Hero"
@@ -59,7 +58,6 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <SiteGate>
         <div className="min-h-screen bg-black" style={{ fontFamily: "'Montserrat', sans-serif" }}>
           <Routes>
             {/* Public routes with Header + Footer */}
@@ -100,7 +98,6 @@ function App() {
           </Routes>
           <Toaster theme="dark" position="top-right" richColors closeButton />
         </div>
-        </SiteGate>
       </BrowserRouter>
     </AuthProvider>
   )
